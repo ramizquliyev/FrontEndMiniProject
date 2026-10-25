@@ -1,0 +1,293 @@
+:root {
+    --page-bg: #ffffff;
+    --text-color: #1a1a1a;
+    --nav-bg: #f4f4f4;
+    --nav-text: #777777;
+    --nav-hover: #000000;
+    --nav-active: #000000;
+    --menu-bg: #ffffff;
+    --menu-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --menu-border: rgba(0, 0, 0, 0.06);
+}
+
+html[data-theme="dark"] {
+    --page-bg: #121212;
+    --text-color: #f3f3f3;
+    --nav-bg: #1f1f1f;
+    --nav-text: #bdbdbd;
+    --nav-hover: #ffffff;
+    --nav-active: #ffffff;
+    --menu-bg: #2a2a2a;
+    --menu-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    --menu-border: rgba(255, 255, 255, 0.08);
+}
+
+html,
+body {
+    background: var(--page-bg);
+    color: var(--text-color);
+}
+
+body {
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+#header-first-section .black-banner-first {
+    background: #000;
+    color: #fff;
+    font-family: "San Francisco", sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 20px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 20.8px;
+    height: 32px;
+    padding: 0px;
+    margin-bottom: 0;
+}
+
+#header-first-section .black-banner-first b {
+    font-weight: 800;
+}
+
+/* Gray navigation directly under the promo bar. */
+.gray-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: calc(100% - 32px);
+    max-width: 1240px;
+    height: 46px;
+    margin: 0 auto;
+    padding: 0 8px;
+    background: var(--nav-bg);
+    border-radius: 20px;
+    font-family: "San Francisco", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    user-select: none;
+}
+
+.gray-nav button {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--nav-text);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.gray-nav button:focus {
+    outline: none;
+}
+
+.gray-nav button:focus-visible {
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 1px;
+}
+
+.gray-nav-list {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    flex-wrap: nowrap;
+}
+
+.gray-nav-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 14px;
+    white-space: nowrap;
+}
+
+.gray-nav-btn:hover,
+.gray-nav-menu-btn:hover,
+.lang-option:hover {
+    color: var(--nav-hover);
+}
+
+.gray-nav-btn.active {
+    color: var(--nav-active);
+    font-weight: 700;
+}
+
+.chevron {
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+
+.gray-nav-drop.open .chevron,
+.lang-drop.open .chevron {
+    transform: rotate(180deg);
+}
+
+.gray-nav-menu {
+    position: fixed;
+    z-index: 30;
+    min-width: 180px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--menu-bg);
+    border: 1px solid var(--menu-border);
+    border-radius: 14px;
+    box-shadow: var(--menu-shadow);
+    transition: none;
+}
+
+.gray-nav-menu[hidden] {
+    display: none !important;
+}
+
+.gray-nav-menu-btn {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.gray-nav-side {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    padding-right: 4px;
+}
+
+.lang-drop {
+    position: relative;
+}
+
+.gray-nav .lang-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 8px;
+    font-weight: 700;
+    color: var(--nav-active);
+}
+
+.lang-menu {
+    position: fixed;
+    z-index: 30;
+    min-width: 72px;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--menu-bg);
+    border: 1px solid var(--menu-border);
+    border-radius: 14px;
+    box-shadow: var(--menu-shadow);
+    transition: none;
+}
+
+.lang-menu[hidden] {
+    display: none !important;
+}
+
+.lang-option {
+    display: block;
+    width: 100%;
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-align: left;
+    font-weight: 500;
+    color: var(--nav-text);
+    white-space: nowrap;
+}
+
+.lang-option.is-selected {
+    color: var(--nav-active);
+    font-weight: 700;
+}
+
+.theme-switch {
+    position: relative;
+    width: 54px;
+    height: 28px;
+    padding: 0;
+    border-radius: 999px;
+    background: #2b2b2b;
+    color: #ffffff;
+    flex-shrink: 0;
+}
+
+.gray-nav .theme-switch {
+    background: #2b2b2b;
+    color: #ffffff;
+}
+
+.theme-switch-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    transition: transform 0.3s;
+}
+
+html[data-theme="dark"] .theme-switch-knob {
+    transform: translateX(26px);
+}
+
+.theme-icon {
+    position: absolute;
+    top: 50%;
+    display: none;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.theme-icon-sun {
+    right: 7px;
+    display: block;
+}
+
+.theme-icon-moon {
+    left: 7px;
+}
+
+html[data-theme="dark"] .theme-icon-sun {
+    display: none;
+}
+
+html[data-theme="dark"] .theme-icon-moon {
+    display: block;
+}
+
+/* Phones, and any width where the links no longer fit, scroll sideways. */
+@media (max-width: 1100px) {
+    .gray-nav-list {
+        overflow-x: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .gray-nav-list::-webkit-scrollbar {
+        display: none;
+    }
+}

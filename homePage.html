@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baku Electronics</title>
+    <link rel="stylesheet" href="./css/homePage.css">
+    <script>
+        /* Apply the saved theme before the page paints, so dark mode does not flash white. */
+        try {
+            if (localStorage.getItem("theme") === "dark") {
+                document.documentElement.setAttribute("data-theme", "dark");
+            }
+        } catch (ignore) {}
+    </script>
+</head>
+<body>
+    <header>
+        <section id="header-first-section">
+            <div class="black-banner-first">
+                <b>70%</b>-dək endirimli qiyməti <b>18 ayadək faizsiz</b> ödə
+            </div>
+            <nav class="gray-nav" aria-label="Sections">
+                <ul class="gray-nav-list">
+                    <li>
+                        <button class="gray-nav-btn active" type="button" aria-current="page">Kampaniyalar</button>
+                    </li>
+                    <li>
+                        <button class="gray-nav-btn" type="button">Korporativ satışlar</button>
+                    </li>
+                    <li>
+                        <button class="gray-nav-btn" type="button">Mağazalar</button>
+                    </li>
+                    <li>
+                        <button class="gray-nav-btn" type="button">Aylıq ödəniş</button>
+                    </li>
+                    <li>
+                        <button class="gray-nav-btn" type="button">Aktiv müqavilələr</button>
+                    </li>
+                    <li>
+                        <button class="gray-nav-btn" type="button">Partnyorlar</button>
+                    </li>
+                    <li class="gray-nav-drop">
+                        <button class="gray-nav-btn gray-nav-drop-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="diger-menu">
+                            Digər
+                            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                                <path d="M2.2 4.4 6 8.1 9.8 4.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <ul class="gray-nav-menu" id="diger-menu" hidden>
+                            <li>
+                                <button class="gray-nav-menu-btn" type="button">Arxayın al</button>
+                            </li>
+                            <li>
+                                <button class="gray-nav-menu-btn" type="button">Müştəri kartı</button>
+                            </li>
+                            <li>
+                                <button class="gray-nav-menu-btn" type="button">Zəmanət</button>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="gray-nav-side">
+                    <div class="lang-drop">
+                        <button class="lang-btn" type="button" aria-expanded="false" aria-haspopup="true" aria-controls="lang-menu">
+                            <span class="lang-btn-text">AZ</span>
+                            <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+                                <path d="M2.2 4.4 6 8.1 9.8 4.4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </svg>
+                        </button>
+                        <ul class="lang-menu" id="lang-menu" hidden>
+                            <li>
+                                <button class="lang-option is-selected" type="button">AZ</button>
+                            </li>
+                            <li>
+                                <button class="lang-option" type="button">RU</button>
+                            </li>
+                        </ul>
+                    </div>
+                    <button class="theme-switch" type="button" aria-pressed="false" aria-label="Switch to dark theme">
+                        <span class="theme-switch-knob"></span>
+                        <svg class="theme-icon theme-icon-moon" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor" d="M15.2 2.6a8.2 8.2 0 1 0 6.2 13.6A6.7 6.7 0 0 1 15.2 2.6z"></path>
+                        </svg>
+                        <svg class="theme-icon theme-icon-sun" width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+                            <circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"></circle>
+                            <path d="M12 3.2v2.3M12 18.5v2.3M3.2 12h2.3M18.5 12h2.3M6.1 6.1l1.6 1.6M16.3 16.3l1.6 1.6M17.9 6.1l-1.6 1.6M7.7 16.3l-1.6 1.6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
+        </section>
+    </header>
+    <main></main>
+    <footer></footer>
+
+
+
+    <script src="./js/homePage.js">
+
+    </script>
+</body>
+</html>
