@@ -203,3 +203,131 @@
         applyTheme(nextTheme);
     });
 })();
+
+// Main image slider: autoplay every 4s, arrows, loop, translateX.
+(function () {
+    var imagesContainer = document.querySelector("#main-slider .images");
+    if (!imagesContainer) {
+        return;
+    }
+
+    // Slide photos only (not the arrow icons inside the buttons).
+    var slides = imagesContainer.querySelectorAll(":scope > img");
+    if (slides.length < 2) {
+        return;
+    }
+
+    // Buttons sit inside .images, so we move only the photos in a track.
+    // Then translateX on the track does not move the arrows.
+    var track = document.createElement("div");
+    track.style.display = "flex";
+    track.style.alignItems = "inherit";
+    track.style.gap = "inherit";
+    track.style.flexShrink = "0";
+    track.style.transition = "transform 0.5s ease";
+
+    for (var i = 0; i < slides.length; i++) {
+        track.appendChild(slides[i]);
+    }
+    // Put the track before the buttons so the arrows stay clickable on top.
+    imagesContainer.insertBefore(track, imagesContainer.querySelector(".buttons"));
+
+    var currentIndex = 0;
+    var intervalId;
+    var isAnimating = false;
+
+    // First button = left arrow, second button = right arrow.
+    var arrowButtons = imagesContainer.querySelectorAll(".buttons button");
+    var prevButton = arrowButtons[0];
+    var nextButton = arrowButtons[1];
+
+    // Furthest the track may move: the last slide, not the empty space after it.
+    function getMaxOffset() {
+        var lastSlide = slides[slides.length - 1];
+        var lastSlideLeft = lastSlide.offsetLeft - slides[0].offsetLeft;
+        var maxOffset = track.scrollWidth - imagesContainer.clientWidth;
+        if (maxOffset > lastSlideLeft) {
+            maxOffset = lastSlideLeft;
+        }
+        if (maxOffset < 0) {
+            maxOffset = 0;
+        }
+        return maxOffset;
+    }
+
+    function goToSlide(index) {
+        // Ignore extra clicks while the 0.5s animation is running.
+        if (isAnimating) {
+            return;
+        }
+
+        // Index is already wrapped in nextSlide / prevSlide. Use it as-is.
+        currentIndex = index;
+        isAnimating = true;
+
+        // Step = distance between two neighbouring slides, including the gap.
+        var step = slides[1].offsetLeft - slides[0].offsetLeft;
+        // Translate only AFTER the index is corrected, never to an empty slot.
+        var offset = currentIndex * step;
+        var maxOffset = getMaxOffset();
+        if (offset > maxOffset) {
+            offset = maxOffset;
+        }
+
+        track.style.transform = "translateX(-" + offset + "px)";
+
+        setTimeout(function () {
+            isAnimating = false;
+        }, 500);
+    }
+
+    function nextSlide() {
+        if (isAnimating) {
+            return;
+        }
+        var step = slides[1].offsetLeft - slides[0].offsetLeft;
+        var maxOffset = getMaxOffset();
+        // Already on the last real slide (do not take one more step into empty space).
+        var atLastVisible = maxOffset > 0 && currentIndex * step >= maxOffset;
+        // Real last index is slides.length - 1 (not slides.length).
+        if (currentIndex >= slides.length - 1 || atLastVisible) {
+            currentIndex = 0;
+        } else {
+            currentIndex++;
+        }
+        goToSlide(currentIndex);
+    }
+
+    function prevSlide() {
+        if (isAnimating) {
+            return;
+        }
+        if (currentIndex <= 0) {
+            currentIndex = slides.length - 1;
+        } else {
+            currentIndex--;
+        }
+        goToSlide(currentIndex);
+    }
+
+    function startAutoplay() {
+        intervalId = setInterval(nextSlide, 4000);
+    }
+
+    function resetAutoplay() {
+        clearInterval(intervalId);
+        startAutoplay();
+    }
+
+    prevButton.addEventListener("click", function () {
+        prevSlide();
+        resetAutoplay();
+    });
+
+    nextButton.addEventListener("click", function () {
+        nextSlide();
+        resetAutoplay();
+    });
+
+    startAutoplay();
+})();
