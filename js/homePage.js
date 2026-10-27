@@ -42,7 +42,7 @@
             left = Math.max(12, window.innerWidth - menuWidth - 12);
         }
 
-        dropMenu.style.top = (rect.bottom + 8) + "px";
+        dropMenu.style.top = rect.bottom + 8 + "px";
         dropMenu.style.left = left + "px";
     }
 
@@ -73,7 +73,7 @@
             left = window.innerWidth - menuWidth - 12;
         }
 
-        langMenu.style.top = (rect.bottom + 8) + "px";
+        langMenu.style.top = rect.bottom + 8 + "px";
         langMenu.style.left = left + "px";
     }
 
@@ -177,7 +177,7 @@
         themeButton.setAttribute("aria-pressed", isDark ? "true" : "false");
         themeButton.setAttribute(
             "aria-label",
-            isDark ? "Switch to light theme" : "Switch to dark theme"
+            isDark ? "Switch to light theme" : "Switch to dark theme",
         );
     }
 
@@ -191,7 +191,8 @@
     applyTheme(savedTheme);
 
     themeButton.addEventListener("click", function () {
-        var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+        var isDark =
+            document.documentElement.getAttribute("data-theme") === "dark";
         var nextTheme = isDark ? "light" : "dark";
 
         try {
@@ -230,7 +231,10 @@
         track.appendChild(slides[i]);
     }
     // Put the track before the buttons so the arrows stay clickable on top.
-    imagesContainer.insertBefore(track, imagesContainer.querySelector(".buttons"));
+    imagesContainer.insertBefore(
+        track,
+        imagesContainer.querySelector(".buttons"),
+    );
 
     var currentIndex = 0;
     var intervalId;
@@ -331,3 +335,40 @@
 
     startAutoplay();
 })();
+
+
+
+var tabmenu = document.querySelectorAll(
+    "#tabmenu-text-section .main-div .tabMenu-div ul li a",
+);
+
+tabmenu.forEach((element) => {
+    element.addEventListener("click", function (a) {
+        a.preventDefault();
+        if (!this.classList.contains("activeTabMenuElem")) {
+            var active = document.querySelector(
+                "#tabmenu-text-section .main-div .tabMenu-div ul li .activeTabMenuElem",
+            );
+
+            active.classList.remove("activeTabMenuElem");
+            this.classList.add("activeTabMenuElem");
+        }
+    });
+});
+
+
+
+var tabs = document.querySelectorAll("#tabmenu-text-section .main-div .tabMenu-div ul li a");
+var productBlocks = document.querySelectorAll("#tabMenuProducts-section .products");
+
+
+
+tabs.forEach(element => {
+    element.addEventListener("click",function(){
+        tabs.forEach(t => t.classList.remove("activeTabMenuElem"));      
+        productBlocks.forEach(b => b.classList.remove("active"));        
+
+        element.classList.add("activeTabMenuElem");                      
+        document.getElementById(element.dataset.tab).classList.add("active");   
+    })
+});
