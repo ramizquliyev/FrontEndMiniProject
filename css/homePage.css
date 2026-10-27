@@ -508,3 +508,28 @@ html[data-theme="dark"] .samButtons button img {
     color: #909090;
     font-size: 14px;
 }
+
+#products-section {
+    display: flex;
+    justify-content: center;
+}
+
+#products-section .main-div {
+    width: 77pc;
+}
+
+#products-section .main-div .text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5pc;
+}
+
+#products-section .main-div .text .firstRed-text {
+    color: red;
+}
+
+#products-section .main-div .text .last-text {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+}
