@@ -671,8 +671,9 @@ html[data-theme="dark"] .samButtons button img {
     position: absolute;
     top: 70%;
     right: 46%;
-    border-right: 1px solid rgba(128, 128, 128, 0.343);
     width: 46%;
+    display: flex;
+    gap: 2pc;
 }
 
 #products-section .main-div .products .item .price-div .oldPrice-newPrice {
@@ -681,6 +682,7 @@ html[data-theme="dark"] .samButtons button img {
     gap: 0.5pc;
     font-family: sans-serif;
     font-weight: bold;
+    border-right: 1px solid rgba(128, 128, 128, 0.343);
 }
 
 #products-section
@@ -703,4 +705,96 @@ html[data-theme="dark"] .samButtons button img {
     .oldPrice-newPrice
     .currentPrice {
     font-size: 22px;
+    width: 8pc;
+}
+
+#products-section .main-div .products .item .price-div .credit-div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+#products-section .main-div .products .item .price-div .credit-div .month {
+    color: gray;
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: bold;
+    text-align: start;
+    width: 5pc;
+}
+
+#products-section .main-div .products .item .price-div .credit-div .price {
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 6pc;
+    text-align: start;
+    font-size: 22px;
+}
+
+#products-section .main-div .products .item .buttons-div {
+    position: absolute;
+    top: 86%;
+    display: flex;
+    gap: 1pc;
+    align-items: center;
+}
+
+#products-section .main-div .products .item .buttons-div .addBasket {
+    width: 196.8px;
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    background-color: #e1e1e1;
+    color: black;
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7pc;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#products-section .main-div .products .item .buttons-div .addBasket:hover {
+    background-color: red;
+    color: white;
+}
+
+#products-section .main-div .products .item .buttons-div .addBasket:hover img {
+    content: url("../assets/img/addToBasketIcon-white.svg");
+}
+
+#products-section .main-div .products .item .buttons-div .favorite {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    background-color: #e1e1e1;
+    cursor: pointer;
+}
+
+#products-section .main-div .products .item .buttons-div .favorite img {
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    background-color: #e1e1e1;
+    width: 46%;
+}
+
+#products-section .main-div .products .item .buttons-div .favorite:hover {
+    background-color: red;
+}
+
+#products-section .main-div .products .item .buttons-div .favorite:hover img {
+    content: url("../assets/img/headerBtnIcon3-white.svg");
+    background-color: red;
+}
+
+#products-section .main-div .products .item .buttons-div .addBasket h6 {
+    font-weight: 500;
+    font-size: 15px;
+    font-family: system-ui;
 }
