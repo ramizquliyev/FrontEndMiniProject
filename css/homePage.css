@@ -512,10 +512,14 @@ html[data-theme="dark"] .samButtons button img {
 #products-section {
     display: flex;
     justify-content: center;
+    margin-top: 5pc;
 }
 
 #products-section .main-div {
     width: 77pc;
+    display: flex;
+    flex-direction: column;
+    gap: 3pc;
 }
 
 #products-section .main-div .text {
@@ -532,4 +536,171 @@ html[data-theme="dark"] .samButtons button img {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 24px;
+}
+
+#products-section .main-div .products {
+}
+
+#products-section .main-div .products .item {
+    background-color: #f5f5f5;
+    width: 289.8px;
+    height: 403px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    border-radius: 24px;
+    cursor: pointer;
+}
+
+#products-section .main-div .products .item .imgDiv {
+    width: 248px;
+    height: 211px;
+    overflow: hidden;
+    border-radius: 22px;
+    position: absolute;
+    bottom: 14pc;
+    border: 1px solid #edeaea;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#products-section .main-div .products .item .imgDiv img {
+    width: 180px;
+    height: 170px;
+}
+
+#products-section .main-div .products .item .imgDiv .discount-div {
+    position: absolute;
+    background-color: #ea2427;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    width: 49.6px;
+    display: flex;
+    justify-content: center;
+    height: 29px;
+    align-items: center;
+    border-radius: 10px;
+    font-size: 11px;
+    top: 5%;
+    right: 74%;
+}
+
+#products-section .main-div .products .item .imgDiv .buttons button {
+    width: 50px;
+    height: 30px;
+    border: none;
+    border-radius: 32px;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+#products-section .main-div .products .item .imgDiv .buttons button img {
+    width: 63%;
+    height: 60%;
+    transition: none;
+}
+
+#products-section .main-div .products .item .imgDiv .buttons {
+    position: absolute;
+    bottom: 81%;
+    left: 75%;
+}
+
+#products-section .main-div .products .item .imgDiv .buttons button:hover {
+    background-color: rgb(252, 227, 227);
+}
+
+#products-section .main-div .products .item .imgDiv .buttons button:hover img {
+    transition: none;
+    filter: invert(27%) sepia(95%) saturate(6000%) hue-rotate(350deg);
+}
+
+#products-section .main-div .products .item .fv-comment_div {
+    position: absolute;
+    top: 49%;
+    display: flex;
+    gap: 1pc;
+    right: 61%;
+}
+
+#products-section .main-div .products .item .fv-comment_div .star {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#products-section .main-div .products .item .fv-comment_div .star img {
+    filter: invert(27%) sepia(95%) saturate(6000%) hue-rotate(350deg);
+}
+
+#products-section .main-div .products .item .fv-comment_div .comment {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#products-section .main-div .products .item .fv-comment_div .comment img {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7151%)
+        hue-rotate(0deg) brightness(95%) contrast(115%) opacity(45%);
+}
+
+#products-section .main-div .products .item .fv-comment_div .star,
+.comment span {
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
+#products-section .main-div .products .item .itemName-div {
+    position: absolute;
+    top: 55%;
+    font-family: sans-serif;
+    font-size: 15px;
+    right: 5%;
+}
+
+#products-section .main-div .products .item .itemName-div h4 {
+    font-weight: 400;
+    width: 249.8px;
+}
+
+#products-section .main-div .products .item .price-div {
+    position: absolute;
+    top: 70%;
+    right: 46%;
+    border-right: 1px solid rgba(128, 128, 128, 0.343);
+    width: 46%;
+}
+
+#products-section .main-div .products .item .price-div .oldPrice-newPrice {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5pc;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+
+#products-section
+    .main-div
+    .products
+    .item
+    .price-div
+    .oldPrice-newPrice
+    .discount {
+    text-decoration: line-through;
+    color: gray;
+    font-size: 14px;
+}
+
+#products-section
+    .main-div
+    .products
+    .item
+    .price-div
+    .oldPrice-newPrice
+    .currentPrice {
+    font-size: 22px;
 }
