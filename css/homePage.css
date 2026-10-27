@@ -539,6 +539,10 @@ html[data-theme="dark"] .samButtons button img {
 }
 
 #products-section .main-div .products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+    row-gap: 65px;
 }
 
 #products-section .main-div .products .item {
