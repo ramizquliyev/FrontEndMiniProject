@@ -470,7 +470,6 @@ html[data-theme="dark"] .samButtons button img {
     display: flex;
     justify-content: center;
     gap: 1.5pc;
-
 }
 
 #services-divs-section .main-div .item {
@@ -627,20 +626,15 @@ html[data-theme="dark"] .samButtons button img {
     margin-top: 4pc;
 }
 
-
-#tabMenuProducts-section .main-div{
+#tabMenuProducts-section .main-div {
     width: 77pc;
     display: flex;
     flex-direction: column;
     gap: 3pc;
 }
 
-.imgDiv .onlineDiscount{
-    
+.imgDiv .onlineDiscount {
 }
-
-
-
 
 #tabMenuProducts-section .products {
     display: none;
@@ -651,4 +645,53 @@ html[data-theme="dark"] .samButtons button img {
     grid-template-columns: repeat(4, 289.8px);
     justify-content: space-between;
     row-gap: 65px;
+}
+
+#videos-section {
+    margin-top: 6pc;
+    background-color: #f5f5f5;
+}
+
+#videos-section .main-div {
+    display: flex;
+    justify-content: center;
+    gap: 10pc;
+}
+
+#videos-section .main-div .txt-div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7pc;
+}
+
+#videos-section .main-div .txt-div .txt1 {
+    color: #e20808;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+#videos-section .main-div .txt-div .txt2 {
+    color: #333333;
+    font-family: sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+#videos-section .main-div .button-div {
+}
+
+#videos-section .main-div .button-div button {
+    width: 174px;
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    background-color: #EA2427;
+    color: white;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#videos-section .main-div .button-div button:hover {
+    background-color: ;
 }
