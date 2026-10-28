@@ -653,10 +653,9 @@ html[data-theme="dark"] .samButtons button img {
 }
 
 #videos-section .main-div {
-    
 }
 
-#videos-section .main-div .up-part{
+#videos-section .main-div .up-part {
     display: flex;
     justify-content: center;
     gap: 42pc;
@@ -691,7 +690,7 @@ html[data-theme="dark"] .samButtons button img {
     height: 45px;
     border-radius: 12px;
     border: none;
-    background-color: #EA2427;
+    background-color: #ea2427;
     color: white;
     font-family: sans-serif;
     font-weight: bold;
@@ -701,4 +700,262 @@ html[data-theme="dark"] .samButtons button img {
 
 #videos-section .main-div .button-div button:hover {
     background-color: #b7171a;
+}
+
+/* Карточки с видео */
+#videos-section .main-div .videos {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 77pc;
+    margin: 0 auto;
+    padding-top: 2.5pc;
+    padding-bottom: 3.5pc;
+}
+
+#videos-section .main-div .videos .video-card {
+    width: 397px;
+    cursor: pointer;
+}
+
+#videos-section .main-div .videos .video-card .video-thumb {
+    position: relative;
+    width: 100%;
+    height: 222px;
+    border-radius: 18px;
+    overflow: hidden;
+}
+
+#videos-section .main-div .videos .video-card .video-thumb img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Тёмная плёнка поверх превью */
+#videos-section .main-div .videos .video-card .video-thumb::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Белая кнопка Play с красным треугольником */
+#videos-section .main-div .videos .video-card .play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 56px;
+    height: 56px;
+    background: #ffffff;
+    border-radius: 14px;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+#videos-section .main-div .videos .video-card .play-btn::after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 16px solid #ff0000;
+    margin-left: 4px;
+}
+
+#videos-section .main-div .videos .video-card .video-title {
+    margin-top: 14px;
+    font-family: sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333333;
+    line-height: 1.4;
+}
+
+/* Модальное окно с видео */
+#videos-section .main-div .videos .video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s;
+}
+
+#videos-section .main-div .videos .video-modal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+#videos-section .main-div .videos .video-modal .video-modal-box {
+    position: relative;
+    width: 760px;
+    max-width: 90%;
+    background: #ffffff;
+    border-radius: 28px;
+    padding: 40px 24px 22px 24px;
+}
+
+#videos-section .main-div .videos .video-modal .video-modal-close {
+    position: absolute;
+    top: 8px;
+    right: 14px;
+    width: 28px;
+    height: 28px;
+    background: none;
+    border: none;
+    font-size: 22px;
+    line-height: 1;
+    color: #9a9a9a;
+    cursor: pointer;
+}
+
+#videos-section .main-div .videos .video-modal .video-modal-frame {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #000000;
+}
+
+#videos-section .main-div .videos .video-modal .video-modal-frame iframe {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+#videos-section
+    .main-div
+    .videos
+    .video-modal
+    .video-modal-frame
+    iframe.active {
+    display: block;
+}
+
+#videos-section .main-div .videos .video-modal .video-modal-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding-top: 18px;
+}
+
+#videos-section .main-div .videos .video-modal .video-modal-bottom p {
+    font-family: sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333333;
+}
+
+#videos-section .main-div .videos .video-modal .subscribe-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ea2427;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+#videos-section .main-div .videos .video-modal .subscribe-btn:hover {
+    background: #b7171a;
+}
+
+#buyAtTheMoment-section {
+    height: 495px;
+}
+
+#buyAtTheMoment-section .main-div {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buyAtTheMoment-section .main-div .divs {
+    display: flex;
+    justify-content: center;
+    gap: 2pc;
+}
+
+#buyAtTheMoment-section .main-div .divs .card {
+    display: flex;
+    border: 1px solid #E0E0E0;
+    width: 605px;
+    border-radius: 24px;
+    height: 305px;
+    overflow: hidden;
+}
+
+#buyAtTheMoment-section .main-div .divs .card p {
+    font-family: sans-serif;
+    font-size: 13px;
+}
+
+#buyAtTheMoment-section .main-div .divs .card .txt2 {
+    color: #333333;
+    font-weight: bold;
+    font-size: 33px;
+    margin-bottom: 4pc;
+}
+
+#buyAtTheMoment-section .main-div .divs .card .texts {
+    width: 24pc;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1pc;
+    padding-left: 2pc;
+    justify-content: center;
+    position: relative;
+}
+
+#buyAtTheMoment-section .main-div .divs .card .texts button {
+    width: 89px;
+    height: 43px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    top: 76%;
+}
+
+#buyAtTheMoment-section .main-div .divs .card .texts button:hover {
+    background-color: #bcbcbc;
+}
+
+#buyAtTheMoment-section .main-div .divs .card .imgDiv {
+    width: 15pc;
+}
+
+#buyAtTheMoment-section .main-div .divs .card .imgDiv img {
+    width: 100%;
 }

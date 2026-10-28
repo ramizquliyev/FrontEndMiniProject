@@ -372,3 +372,42 @@ tabs.forEach(element => {
         document.getElementById(element.dataset.tab).classList.add("active");   
     })
 });
+
+
+/* Открытие и закрытие окна с видео */
+var cards = document.querySelectorAll("#videos-section .video-card");
+var modal = document.querySelector("#videos-section .video-modal");
+var iframes = document.querySelectorAll("#videos-section .video-modal-frame iframe");
+var closeBtn = document.querySelector("#videos-section .video-modal-close");
+
+cards.forEach(function (card, i) {
+    card.addEventListener("click", function () {
+        iframes[0].classList.remove("active");
+        iframes[1].classList.remove("active");
+        iframes[2].classList.remove("active");
+        iframes[i].classList.add("active");
+        modal.classList.add("show");
+    });
+});
+
+closeBtn.addEventListener("click", function () {
+    modal.classList.remove("show");
+    iframes[0].classList.remove("active");
+    iframes[1].classList.remove("active");
+    iframes[2].classList.remove("active");
+    iframes[0].src = iframes[0].src;
+    iframes[1].src = iframes[1].src;
+    iframes[2].src = iframes[2].src;
+});
+
+modal.addEventListener("click", function (e) {
+    if (e.target === modal) {
+        modal.classList.remove("show");
+        iframes[0].classList.remove("active");
+        iframes[1].classList.remove("active");
+        iframes[2].classList.remove("active");
+        iframes[0].src = iframes[0].src;
+        iframes[1].src = iframes[1].src;
+        iframes[2].src = iframes[2].src;
+    }
+});
