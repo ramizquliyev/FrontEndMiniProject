@@ -907,7 +907,7 @@ html[data-theme="dark"] .samButtons button img {
 
 #buyAtTheMoment-section .main-div .divs .card {
     display: flex;
-    border: 1px solid #E0E0E0;
+    border: 1px solid #e0e0e0;
     width: 605px;
     border-radius: 24px;
     height: 305px;
@@ -958,4 +958,109 @@ html[data-theme="dark"] .samButtons button img {
 
 #buyAtTheMoment-section .main-div .divs .card .imgDiv img {
     width: 100%;
+}
+
+#news-section {
+    background-color: #f5f5f5;
+    height: 613px;
+}
+
+#news-section .main-div {
+}
+
+#news-section .main-div .up-part {
+    display: flex;
+    justify-content: center;
+    gap: 43pc;
+    padding-top: 2.6pc;
+}
+
+#news-section .main-div .up-part .text-div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5pc;
+}
+
+#news-section .main-div .up-part .text-div .txt1 {
+    font-family: sans-serif;
+    font-size: 14px;
+    color: #dd0404;
+}
+
+#news-section .main-div .up-part .text-div .txt2 {
+    font-family: sans-serif;
+    color: #333333;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#news-section .main-div .up-part .button-div button {
+    width: 167.7px;
+    height: 45px;
+    border-radius: 12px;
+    border: none;
+    background-color: rgb(227, 7, 7);
+    color: white;
+    font-weight: bold;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+#news-section .main-div .up-part .button-div button:hover {
+    background-color: rgb(179, 5, 5);
+}
+
+#news-section .main-div .down-part {
+    display: flex;
+    justify-content: center;
+    padding-top: 6pc;
+        gap: 2pc;
+}
+
+#news-section .main-div .down-part .news {
+    width: 604px;
+    height: 340px;
+    border-radius: 22px;
+}
+
+#news-section .main-div .down-part .news .img-layer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 22px;
+    overflow: hidden;
+}
+
+#news-section .main-div .down-part .news .img-layer img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(0.6);
+}
+
+#news-section .main-div .down-part .news .img-layer img:hover {
+    transform: scale(1.1);
+}
+
+#news-section .main-div .down-part .news .img-layer button {
+    position: absolute;
+    left: 30pc;
+    top: 1pc;
+    height: 45px;
+    width: 87px;
+    border-radius: 12px;
+    border: none;
+    font-weight: bold;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+#news-section .main-div .down-part .news .img-layer button:hover {
+    background-color: #e5dddd;
+}
+#news-section .main-div .down-part .news p {
+    color: #333333;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 25px;
 }
