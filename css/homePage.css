@@ -653,24 +653,30 @@ html[data-theme="dark"] .samButtons button img {
 }
 
 #videos-section .main-div {
-    display: flex;
-    justify-content: center;
-    gap: 10pc;
+    
 }
 
-#videos-section .main-div .txt-div {
+#videos-section .main-div .up-part{
+    display: flex;
+    justify-content: center;
+    gap: 42pc;
+    align-items: center;
+    padding-top: 2.5pc;
+}
+
+#videos-section .main-div .up-part .txt-div {
     display: flex;
     flex-direction: column;
     gap: 0.7pc;
 }
 
-#videos-section .main-div .txt-div .txt1 {
+#videos-section .main-div .up-part .txt-div .txt1 {
     color: #e20808;
     font-family: sans-serif;
     font-size: 14px;
 }
 
-#videos-section .main-div .txt-div .txt2 {
+#videos-section .main-div .up-part .txt-div .txt2 {
     color: #333333;
     font-family: sans-serif;
     font-size: 24px;
@@ -680,7 +686,7 @@ html[data-theme="dark"] .samButtons button img {
 #videos-section .main-div .button-div {
 }
 
-#videos-section .main-div .button-div button {
+#videos-section .main-div .up-part .button-div button {
     width: 174px;
     height: 45px;
     border-radius: 12px;
@@ -690,8 +696,9 @@ html[data-theme="dark"] .samButtons button img {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 14px;
+    cursor: pointer;
 }
 
 #videos-section .main-div .button-div button:hover {
-    background-color: ;
+    background-color: #b7171a;
 }
