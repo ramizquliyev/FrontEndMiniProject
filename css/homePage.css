@@ -1215,14 +1215,93 @@ ul {
     font-family: sans-serif;
     font-weight: bold;
     font-size: 14px;
-    color: #9F9F9F;
+    color: #9f9f9f;
 }
 
-#listEmail-section .main-div .lists-div ul li{
+#listEmail-section .main-div .lists-div ul li {
     margin-bottom: 0.7pc;
 }
 
-#listEmail-section .main-div .lists-div ul li:hover a{
+#listEmail-section .main-div .lists-div ul li:hover a {
     color: black;
 }
-    
+
+#last-section {
+}
+
+#last-section .main-div {
+    padding-top: 1pc;
+}
+
+#last-section .main-div .up-part {
+    display: flex;
+    justify-content: center;
+    gap: 38pc;
+    align-items: center;
+    border-bottom: 1px solid grey;
+    padding-bottom: 1pc;
+}
+
+#last-section .main-div .up-part .something-div {
+}
+
+#last-section .main-div .up-part .something-div p {
+    font-family: sans-serif;
+    font-weight: bold;
+    margin-bottom: 1pc;
+}
+
+#last-section .main-div .up-part .something-div .images img {
+    width: 14px;
+    cursor: pointer;
+    filter: invert(50%);
+}
+
+#last-section .main-div .up-part .something-div .images {
+    display: flex;
+    gap: 1pc;
+    align-items: center;
+}
+
+#last-section .main-div .up-part .something-div .images .calling span {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+#last-section .main-div .up-part .something-div .images .calling img {
+    width: 19px;
+}
+
+#last-section .main-div .up-part .something-div .images .calling {
+    cursor: pointer;
+    margin-left: 4pc;
+}
+
+#last-section .main-div .up-part .apps-div img {
+    cursor: pointer;
+}
+
+#last-section .main-div .up-part .apps-div {
+    display: flex;
+    gap: 1pc;
+}
+
+#last-section .main-div .text {
+    display: flex;
+    justify-content: center;
+    gap: 45pc;
+    padding-bottom: 1pc;
+    padding-top: 2.5pc;
+}
+
+#last-section .main-div .text p {
+    font-family: sans-serif;
+}
+
+#last-section .main-div .text a {
+    color: grey;
+    font-family: math;
+    color: grey;
+    font-family: math;
+}
