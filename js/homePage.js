@@ -411,3 +411,83 @@ modal.addEventListener("click", function (e) {
         iframes[2].src = iframes[2].src;
     }
 });
+
+
+/* Лента логотипов: автопрокрутка и перетаскивание мышью */
+var advertLine = document.querySelector("#advertisment-section .advertLine-div");
+var advertTrack = document.querySelector("#advertisment-section .advert-track");
+var advertCards = document.querySelectorAll("#advertisment-section .advert-card");
+var advertHalf = advertCards.length / 2;
+var advertOffset = 0;
+var advertDragging = false;
+var advertStartX = 0;
+var advertStartOffset = 0;
+
+function advertStep() {
+    var card = advertCards[0];
+    var gap = parseFloat(window.getComputedStyle(advertTrack).gap);
+    return card.offsetWidth + gap;
+}
+
+function advertWrap() {
+    var cycle = advertStep() * advertHalf;
+    if (advertOffset <= 0 - cycle) {
+        advertOffset = advertOffset + cycle;
+    }
+    if (advertOffset > 0) {
+        advertOffset = advertOffset - cycle;
+    }
+}
+
+function advertMove() {
+    advertTrack.style.transform = "translateX(" + advertOffset + "px)";
+}
+
+setInterval(function () {
+    if (advertDragging === false) {
+        advertTrack.style.transition = "transform 0.6s ease";
+        advertOffset = advertOffset - advertStep();
+        advertMove();
+        setTimeout(function () {
+            if (advertDragging === false) {
+                advertTrack.style.transition = "none";
+                advertWrap();
+                advertMove();
+            }
+        }, 650);
+    }
+}, 4000);
+
+advertLine.addEventListener("mousedown", function (e) {
+    e.preventDefault();
+    advertDragging = true;
+    advertLine.classList.add("is-dragging");
+    advertTrack.style.transition = "none";
+    advertStartX = e.clientX;
+    var trans = window.getComputedStyle(advertTrack).transform;
+    if (trans.indexOf("matrix") !== -1) {
+        var parts = trans.split(",");
+        advertOffset = parseFloat(parts[4]);
+    }
+    advertStartOffset = advertOffset;
+});
+
+document.addEventListener("mousemove", function (e) {
+    if (advertDragging === true) {
+        var moveX = e.clientX - advertStartX;
+        advertOffset = advertStartOffset + moveX;
+        advertWrap();
+        advertStartOffset = advertOffset - moveX;
+        advertMove();
+    }
+});
+
+document.addEventListener("mouseup", function () {
+    if (advertDragging === true) {
+        advertDragging = false;
+        advertLine.classList.remove("is-dragging");
+        advertWrap();
+        advertMove();
+        advertTrack.style.transition = "transform 0.6s ease";
+    }
+});
