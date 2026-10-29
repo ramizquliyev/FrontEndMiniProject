@@ -624,57 +624,256 @@
                                 </div>
                             </div>
                             <h1>Smartfon Apple iPhone 16 128GB TEAL</h1>
-                            <div class="price-row">
-                                <span class="old-price">2599.99 ₼</span>
-                                <span class="new-price">2399.99 ₼</span>
+                            <div class="price-block">
+                                <p class="old-price">2599.99 ₼</p>
+                                <p class="new-price">2399.99 ₼</p>
+                                <p class="note"><b>Qeyd:</b> Endirim 2026-10-31 tarixinədək qüvvədədir. Kampaniya müddətində qiymət dəyişikliyi ola bilər.</p>
                             </div>
-                            <div class="credit-row">
-                                <span class="month">18 ay</span>
-                                <span class="month-price">140.71 ₼</span>
-                            </div>
-                            <p class="note">Qeyd: Endirim 2026-10-31 tarixinədək qüvvədədir. Kampaniya müddətində qiymət dəyişikliyi ola bilər.</p>
-                            <div class="buy-row">
-                                <button class="buy-main" type="button">Məhsulu al</button>
-                                <button class="buy-click" type="button">Bir kliklə al</button>
-                            </div>
-                            <button class="buy-fast" type="button">Sürətli sifariş</button>
-                            <div class="icon-actions">
-                                <button class="fav-btn" type="button" aria-label="Seçilmişlər">
-                                    <img src="./assets/img/headerBtnIcon3.svg" alt="">
+                            <div class="buy-line">
+                                <button class="add-cart" type="button">
+                                    <img src="./assets/img/addToBasketIcon-white.svg" alt="">
+                                    Səbətə əlavə et
                                 </button>
-                                <button type="button" aria-label="Müqayisə">
+                                <button class="share-btn" type="button">
+                                    <i class="fa-solid fa-share-nodes"></i>
+                                    Paylaş
+                                </button>
+                                <button class="round-btn" type="button" aria-label="Müqayisə">
                                     <img src="./assets/img/headerBtnIcon1.svg" alt="">
                                 </button>
+                                <button class="round-btn fav-btn" type="button" aria-label="Seçilmişlər">
+                                    <img src="./assets/img/headerBtnIcon3.svg" alt="">
+                                </button>
                             </div>
-                            <p class="note">Qeyd: Sifarişin rəsmiləşdirilməsi zamanı 10%-ə qədər xidmət haqqı əlavə oluna bilər.</p>
+                            <div class="quick-row">
+                                <button class="quick-card" type="button">
+                                    <span class="quick-icon gray"><i class="fa-solid fa-bolt"></i></span>
+                                    <span class="quick-texts">
+                                        <span class="quick-title">Bir kliklə al</span>
+                                        <span class="quick-sub">Sürətli sifariş</span>
+                                    </span>
+                                </button>
+                                <button class="quick-card" type="button">
+                                    <span class="quick-icon red"><i class="fa-solid fa-credit-card"></i></span>
+                                    <span class="quick-texts">
+                                        <span class="quick-title">Hissə-hissə ödə</span>
+                                        <span class="quick-sub"><span id="hisse-price">133.33</span> ₼ / <span id="hisse-month">18</span> ay</span>
+                                    </span>
+                                </button>
+                            </div>
+                            <div class="credit-box">
+                                <div class="pay-pills">
+                                    <button class="pay-pill active" type="button"><i class="fa-regular fa-id-card"></i> Nisyə al</button>
+                                    <button class="pay-pill" type="button"><span class="logo-dot red-dot"></span> Birbank</button>
+                                    <button class="pay-pill" type="button"><span class="logo-dot yellow-dot"></span> Bolkart</button>
+                                    <button class="pay-pill" type="button"><span class="tam-logo">tam.</span> Tamkart</button>
+                                </div>
+                                <div class="credit-inner">
+                                    <p class="credit-title">Müddət</p>
+                                    <div class="month-list">
+                                        <button class="month-btn" type="button" data-month="3"><span class="zero">0%</span>3 ay</button>
+                                        <button class="month-btn" type="button" data-month="6"><span class="zero">0%</span>6 ay</button>
+                                        <button class="month-btn" type="button" data-month="9"><span class="zero">0%</span>9 ay</button>
+                                        <button class="month-btn" type="button" data-month="12"><span class="zero">0%</span>12 ay</button>
+                                        <button class="month-btn" type="button" data-month="15"><span class="zero">0%</span>15 ay</button>
+                                        <button class="month-btn active" type="button" data-month="18"><span class="zero">0%</span>18 ay</button>
+                                        <button class="month-btn" type="button" data-month="21">21 ay</button>
+                                        <button class="month-btn" type="button" data-month="24">24 ay</button>
+                                    </div>
+                                </div>
+                                <div class="sum-row">
+                                    <div>
+                                        <p class="sum-label">Aylıq ödəniş:</p>
+                                        <p class="sum-big" id="monthly-pay">133.33 ₼</p>
+                                    </div>
+                                    <div class="sum-right">
+                                        <p class="sum-label">Yekun qiymət:</p>
+                                        <p class="sum-big" id="total-pay">2399.99 ₼</p>
+                                    </div>
+                                </div>
+                                <div class="down-box">
+                                    <p class="credit-title">İlkin ödəniş</p>
+                                    <div class="down-row">
+                                        <button type="button" id="down-minus">−</button>
+                                        <span id="down-value">0</span>
+                                        <span class="manat">₼</span>
+                                        <button type="button" id="down-plus">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="together-box">
+                                <p class="side-title">Məhsulun yanında al</p>
+                                <div class="together-list">
+                                    <div class="together-row">
+                                        <div class="together-img">
+                                            <img src="./assets/img/simsiz-qulaqliq-xiaomi-redmi-buds-6-play-6.webp" alt="">
+                                        </div>
+                                        <div class="together-info">
+                                            <p class="together-name">Smart saat Xiaomi Smart Band 10 Pro, Glacier Silver...</p>
+                                            <p class="together-prices">
+                                                <span class="together-old">199.99 ₼</span>
+                                                <span class="together-new">149.99 ₼</span>
+                                                <span class="together-line">|</span>
+                                                <span class="together-pay">8.79 ₼</span>
+                                                <span class="together-ay">18 ay</span>
+                                            </p>
+                                        </div>
+                                        <button class="together-buy" type="button">+ Birlikdə al</button>
+                                    </div>
+                                    <div class="together-row">
+                                        <div class="together-img">
+                                            <img src="./assets/img/Simsiz_qulaqlıq_HUAWEI_FreeClip_2_Rose_Gold_55038865.webp" alt="">
+                                        </div>
+                                        <div class="together-info">
+                                            <p class="together-name">Smart saat Xiaomi Redmi Watch 6 Active Sunset Orange...</p>
+                                            <p class="together-prices">
+                                                <span class="together-old">119.99 ₼</span>
+                                                <span class="together-new">109.99 ₼</span>
+                                                <span class="together-line">|</span>
+                                                <span class="together-pay">6.45 ₼</span>
+                                                <span class="together-ay">18 ay</span>
+                                            </p>
+                                        </div>
+                                        <button class="together-buy" type="button">+ Birlikdə al</button>
+                                    </div>
+                                    <div class="together-row">
+                                        <div class="together-img">
+                                            <img src="./assets/img/simsiz-qulaqlq-sony-wh-ch520-blue_1.webp" alt="">
+                                        </div>
+                                        <div class="together-info">
+                                            <p class="together-name">Qulaqlıq XIAOMI Mi In-Ear Headphones Basic silver...</p>
+                                            <p class="together-prices">
+                                                <span class="together-old">15.99 ₼</span>
+                                                <span class="together-new">9.99 ₼</span>
+                                                <span class="together-line">|</span>
+                                                <span class="together-pay">0.59 ₼</span>
+                                                <span class="together-ay">18 ay</span>
+                                            </p>
+                                        </div>
+                                        <button class="together-buy" type="button">+ Birlikdə al</button>
+                                    </div>
+                                    <div class="together-row">
+                                        <div class="together-img">
+                                            <img src="./assets/img/simsiz-qulaqliq-xiaomi-redmi-buds-6-play-6.webp" alt="">
+                                        </div>
+                                        <div class="together-info">
+                                            <p class="together-name">Simsiz qulaqlıq Xiaomi Redmi Buds 6 White (BHR9250GL)</p>
+                                            <p class="together-prices">
+                                                <span class="together-old">99.99 ₼</span>
+                                                <span class="together-new">79.99 ₼</span>
+                                                <span class="together-line">|</span>
+                                                <span class="together-pay">4.69 ₼</span>
+                                                <span class="together-ay">18 ay</span>
+                                            </p>
+                                        </div>
+                                        <button class="together-buy" type="button">+ Birlikdə al</button>
+                                    </div>
+                                    <div class="together-row">
+                                        <div class="together-img">
+                                            <img src="./assets/img/simsiz-qulaqlq-apple-airpods-4-with-active-noise-cancellation-mxp93zea_1.webp" alt="">
+                                        </div>
+                                        <div class="together-info">
+                                            <p class="together-name">Simsiz qulaqlıq Apple AirPods 4 with Active Noise Cancellation...</p>
+                                            <p class="together-prices">
+                                                <span class="together-old">349.99 ₼</span>
+                                                <span class="together-new">299.99 ₼</span>
+                                                <span class="together-line">|</span>
+                                                <span class="together-pay">17.64 ₼</span>
+                                                <span class="together-ay">18 ay</span>
+                                            </p>
+                                        </div>
+                                        <button class="together-buy" type="button">+ Birlikdə al</button>
+                                    </div>
+                                    <div class="together-row">
+                                        <div class="together-img">
+                                            <img src="./assets/img/Simsiz_qulaqlıq_HUAWEI_FreeClip_2_Rose_Gold_55038865.webp" alt="">
+                                        </div>
+                                        <div class="together-info">
+                                            <p class="together-name">Simsiz qulaqlıq HUAWEI FreeClip 2 Rose Gold</p>
+                                            <p class="together-prices">
+                                                <span class="together-old">429.99 ₼</span>
+                                                <span class="together-new">379.99 ₼</span>
+                                                <span class="together-line">|</span>
+                                                <span class="together-pay">22.35 ₼</span>
+                                                <span class="together-ay">18 ay</span>
+                                            </p>
+                                        </div>
+                                        <button class="together-buy" type="button">+ Birlikdə al</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="info-box">
+                                <p class="side-title">Məlumat</p>
+                                <div class="reviews-card">
+                                    <button class="info-card" type="button" id="reviews-toggle">
+                                        <span class="info-icon"><i class="fa-regular fa-comment-dots"></i></span>
+                                        <span class="info-texts">
+                                            <span class="info-name">Rəylər</span>
+                                            <span class="info-sub">Baxmaq üçün kliklə</span>
+                                        </span>
+                                        <span class="info-plus">+</span>
+                                    </button>
+                                    <div class="reviews-body">
+                                        <p>Hələ rəy yoxdur.</p>
+                                    </div>
+                                </div>
+                                <div class="info-card call-card">
+                                    <span class="info-icon"><i class="fa-solid fa-phone"></i></span>
+                                    <span class="info-texts">
+                                        <span class="info-name">Sualınız var?</span>
+                                        <span class="info-sub">Zəng edin soruşun</span>
+                                    </span>
+                                    <a class="call-btn" href="tel:143">Zəng et</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
             <section id="specs-section">
                 <div class="main-div">
-                    <h2>Xüsusiyyətlər</h2>
-                    <div class="specs-table">
-                        <div class="spec-row"><span class="label">Brend</span><span class="value">Apple</span></div>
-                        <div class="spec-row"><span class="label">Zəmanət</span><span class="value">1 il</span></div>
-                        <div class="spec-row"><span class="label">Qablaşdırmaya daxildir</span><span class="value">sənədlər, kabel USB-C to Lightning</span></div>
-                        <div class="spec-row"><span class="label">Rəng</span><span class="value">yaşıl</span></div>
-                        <div class="spec-row"><span class="label">Məhsul tipi</span><span class="value">Smartfon</span></div>
-                        <div class="spec-row"><span class="label">Çəki</span><span class="value">170 qr</span></div>
-                        <div class="spec-row"><span class="label">Ölçülər</span><span class="value">147.6 x 71.6 x 7.8 mm</span></div>
-                        <div class="spec-row"><span class="label">İstehsalçı ölkə</span><span class="value">Çin</span></div>
-                        <div class="spec-row"><span class="label">Korpus materialı</span><span class="value">Şüşə, Paslanmayan polad</span></div>
-                        <div class="spec-row"><span class="label">Akkumulyatorun həcmi</span><span class="value">Li-Ion 4323 mAh</span></div>
-                        <div class="spec-row"><span class="label">Ekranın ölçüsü</span><span class="value">6.1"</span></div>
-                        <div class="spec-row"><span class="label">Əməliyyat sistemi</span><span class="value">iOS 18</span></div>
-                        <div class="spec-row"><span class="label">Prosessor tipi</span><span class="value">Apple A18 (3 nm)</span></div>
-                        <div class="spec-row"><span class="label">Operativ yaddaş</span><span class="value">8 GB</span></div>
-                        <div class="spec-row"><span class="label">Quraşdırılmış yaddaş</span><span class="value">128 GB</span></div>
-                        <div class="spec-row"><span class="label">Əsas kamera</span><span class="value">48MP + 12MP</span></div>
-                        <div class="spec-row"><span class="label">Frontal kamera</span><span class="value">12 MP</span></div>
-                        <div class="spec-row"><span class="label">Şəbəkə</span><span class="value">2G, 3G, 4G, 5G</span></div>
-                        <div class="spec-row"><span class="label">SIM-kart</span><span class="value">Nano-SIM + eSIM</span></div>
-                        <div class="spec-row"><span class="label">Sudan və tozdan qorunma</span><span class="value">IP68</span></div>
+                    <div class="specs-card">
+                        <div class="specs-head">
+                            <span class="specs-icon"><i><img src="./assets/img/productDesriptionMaterials/propertiesIcon.svg" alt=""></i></span>
+                            <h2>Xüsusiyyətlər</h2>
+                        </div>
+                        <div class="specs-body">
+                            <div class="specs-col">
+                                <div class="spec-row"><span class="label">Brend:</span><span class="value">Apple</span></div>
+                                <div class="spec-row"><span class="label">Qablaşdırmaya daxildir:</span><span class="value">sənədlər, kabel USB-C to Lightning</span></div>
+                                <div class="spec-row"><span class="label">Məhsul tipi:</span><span class="value">Smartfon</span></div>
+                                <div class="spec-row"><span class="label">İstehsalçı ölkə:</span><span class="value">Çin</span></div>
+                                <div class="spec-row"><span class="label">Ekranın ölçüsü:</span><span class="value">6.1"</span></div>
+                                <div class="spec-row"><span class="label">Frontal kamera:</span><span class="value">12 MP</span></div>
+                                <div class="spec-row"><span class="label">Əməliyyat sistemi:</span><span class="value">iOS 18</span></div>
+                                <div class="spec-row"><span class="label">SIM-kart:</span><span class="value">Nano-SIM + eSIM</span></div>
+                                <div class="spec-row"><span class="label">Şəbəkə:</span><span class="value">2G, 3G, 4G, 5G</span></div>
+                                <div class="spec-row"><span class="label">Prosessor tipi:</span><span class="value">Apple A18 (3 nm)</span></div>
+                                <div class="spec-row"><span class="label">Operativ yaddaş:</span><span class="value">8 GB</span></div>
+                                <div class="spec-row"><span class="label">Quraşdırılmış yaddaş:</span><span class="value">128 GB</span></div>
+                                <div class="spec-row"><span class="label">Video çəkiliş:</span><span class="value">4K@60fps</span></div>
+                                <div class="spec-row"><span class="label">Led flaş:</span><span class="value">var</span></div>
+                                <div class="spec-row"><span class="label">Optik zoom:</span><span class="value">var</span></div>
+                            </div>
+                            <div class="specs-col">
+                                <div class="spec-row"><span class="label">Zəmanət:</span><span class="value">1 il</span></div>
+                                <div class="spec-row"><span class="label">Rəng:</span><span class="value">yaşıl</span></div>
+                                <div class="spec-row"><span class="label">Ölçülər:</span><span class="value">147.6 x 71.6 x 7.8 mm</span></div>
+                                <div class="spec-row"><span class="label">Korpus materialı:</span><span class="value">Şüşə, Paslanmayan polad</span></div>
+                                <div class="spec-row"><span class="label">Akkumulyatorun həcmi:</span><span class="value">Li-Ion 3561 mAh</span></div>
+                                <div class="spec-row"><span class="label">Bluetooth:</span><span class="value">5.3</span></div>
+                                <div class="spec-row"><span class="label">Əsas kamera:</span><span class="value">48MP + 12MP</span></div>
+                                <div class="spec-row"><span class="label">Wi-Fi:</span><span class="value">802.11 a/b/g/n/ac/ax</span></div>
+                                <div class="spec-row"><span class="label">NFC:</span><span class="value">var</span></div>
+                                <div class="spec-row"><span class="label">Sudan və tozdan qorunma:</span><span class="value">IP68</span></div>
+                                <div class="spec-row"><span class="label">Çəki:</span><span class="value">170 qr</span></div>
+                                <div class="spec-row"><span class="label">Nüvələrin sayı:</span><span class="value">6</span></div>
+                                <div class="spec-row"><span class="label">Ekran icazəsi:</span><span class="value">2556 x 1179</span></div>
+                                <div class="spec-row"><span class="label">Qrafik prosessor:</span><span class="value">Apple GPU</span></div>
+                                <div class="spec-row"><span class="label">Avtofokus:</span><span class="value">var</span></div>
+                            </div>
+                        </div>
+                        <button class="specs-toggle" type="button">Kiçiltmək üçün kliklə <span>^</span></button>
                     </div>
                 </div>
             </section>
