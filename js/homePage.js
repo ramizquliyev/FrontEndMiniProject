@@ -491,3 +491,37 @@ document.addEventListener("mouseup", function () {
         advertTrack.style.transition = "transform 0.6s ease";
     }
 });
+
+var catalogBtn = document.querySelector(".catalog-btn");
+var catalog = document.querySelector("#header-second-section .catalog");
+var categories = document.querySelectorAll("#header-second-section .catalog-categories .category");
+var panels = document.querySelectorAll("#header-second-section .catalog-panels .panel");
+
+// открыть / закрыть каталог по кнопке
+catalogBtn.addEventListener("click", function () {
+    catalog.classList.toggle("show");
+    catalogBtn.classList.toggle("open");
+});
+
+// наведение на категорию показывает её панель
+categories.forEach(function (category) {
+    category.addEventListener("mouseover", function () {
+        var number = this.getAttribute("data-cat");
+        categories.forEach(function (c) {
+            c.classList.remove("active");
+        });
+        panels.forEach(function (p) {
+            p.classList.remove("active");
+        });
+        this.classList.add("active");
+        document.querySelector('.catalog-panels .panel[data-panel="' + number + '"]').classList.add("active");
+    });
+});
+
+// клик вне каталога закрывает его
+document.addEventListener("click", function (e) {
+    if (!catalog.contains(e.target) && !catalogBtn.contains(e.target)) {
+        catalog.classList.remove("show");
+        catalogBtn.classList.remove("open");
+    }
+});

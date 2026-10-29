@@ -97,7 +97,7 @@
                     <div class="logoAndCatalogBtn">
                         <img src="./assets/img/baku-electronics-logo_QJeQcxF.svg" alt="bakuElectronickLogo">
 
-                        <button><img src="./assets/img/catalogSvg.svg" alt="" style="    width: 23px;">Kataloq</button>
+                        <button type="button" class="catalog-btn"><img src="./assets/img/catalogSvg.svg" alt="" style="    width: 23px;"><span class="catalog-x">✕</span>Kataloq</button>
                     </div>
                     <div class="inputContainer">
                         <input type="text" placeholder="Məhsul axtar...">
@@ -122,6 +122,466 @@
                             <!-- Custom user (account) icon. -->
                             <img src="./assets/img/headerBtnIcon4.svg" alt="Hesab" draggable="false">
                         </button>
+                    </div>
+                </div>
+                <div class="catalog">
+                    <div class="catalog-categories">
+                        <div class="category active" data-cat="1">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_4_smartfon-smartsaat.svg" alt=""></span>
+                            <span>Smartfonlar və planşetlər</span>
+                        </div>
+                        <div class="category" data-cat="2">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_6_notbuk-laptop-komputer.svg" alt=""></span>
+                            <span>Notbuklar və kompüter texnikası</span>
+                        </div>
+                        <div class="category" data-cat="3">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_9_oyun-konsol.svg" alt=""></span>
+                            <span>Oyun konsolları və aksesuarlar</span>
+                        </div>
+                        <div class="category" data-cat="4">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_10_televizor-audio.svg" alt=""></span>
+                            <span>TV, audio və video</span>
+                        </div>
+                        <div class="category" data-cat="5">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_11_boyuk-meiset-texnika.svg" alt=""></span>
+                            <span>Böyük məişət texnikası</span>
+                        </div>
+                        <div class="category" data-cat="6">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_14_kicik-meiset-texnika_1.svg" alt=""></span>
+                            <span>Kiçik məişət texnikası</span>
+                        </div>
+                        <div class="category" data-cat="7">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_16_iqlim-kondisioner-kombi_1.svg" alt=""></span>
+                            <span>İqlim texnikası</span>
+                        </div>
+                        <div class="category" data-cat="8">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_17_gozellik-saglamliq_1.svg" alt=""></span>
+                            <span>Gözəllik və baxım</span>
+                        </div>
+                        <div class="category" data-cat="9">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_18_avto-moto_1.svg" alt=""></span>
+                            <span>Avto və moto</span>
+                        </div>
+                        <div class="category" data-cat="10">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_19_tibbi-mehsullar.svg" alt=""></span>
+                            <span>Tibbi məhsulları</span>
+                        </div>
+                        <div class="category" data-cat="11">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_20_ev-bag.svg" alt=""></span>
+                            <span>Ev və bağ</span>
+                        </div>
+                        <div class="category" data-cat="12">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_21_mebel-tekstil-dekor.svg" alt=""></span>
+                            <span>Mebel, tekstil və dekor</span>
+                        </div>
+                        <div class="category" data-cat="13">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_22_qab-qacaq-tava-qazan.svg" alt=""></span>
+                            <span>Qab-qacaq, tava-qazan</span>
+                        </div>
+                        <div class="category" data-cat="14">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_23_usaq-alemi.svg" alt=""></span>
+                            <span>Uşaq aləmi</span>
+                        </div>
+                        <div class="category" data-cat="15">
+                            <span class="category-icon"><img src="./assets/img/katalogIcons/imgi_24_kitablar.svg" alt=""></span>
+                            <span>Kitablar</span>
+                        </div>
+                    </div>
+                    <div class="catalog-panels">
+                        <div class="panel active" data-panel="1">
+                            <div class="panel-column">
+                                <p class="panel-title">Smartfonlar</p>
+                                <a href="#" class="panel-link">Apple</a>
+                                <a href="#" class="panel-link">Samsung</a>
+                                <a href="#" class="panel-link">Xiaomi</a>
+                                <a href="#" class="panel-link">Huawei</a>
+                                <a href="#" class="panel-link">Motorola</a>
+                                <a href="#" class="panel-link">HONOR</a>
+                                <a href="#" class="panel-link">Poco</a>
+                                <a href="#" class="panel-link">Infinix</a>
+                                <a href="#" class="panel-link">Tecno</a>
+                                <a href="#" class="panel-link">Vivo</a>
+                                <a href="#" class="panel-link">Nokia</a>
+                                <a href="#" class="panel-link">Bütün brendlər</a>
+                                <p class="panel-title">Qulaqlıqlar</p>
+                                <a href="#" class="panel-link">Simsiz qulaqlıqlar</a>
+                                <a href="#" class="panel-link">Simli qulaqlıqlar</a>
+                                <a href="#" class="panel-link">Uşaqlar üçün qulaqlıqlar</a>
+                                <a href="#" class="panel-link">Oyun üçün qulaqlıqlar</a>
+                                <a href="#" class="panel-link">Bütün qulaqlıqlar</a>
+                                <p class="panel-title">Ev və ofis telefonları</p>
+                                <a href="#" class="panel-link">Gigaset</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Planşetlər</p>
+                                <a href="#" class="panel-link">Apple</a>
+                                <a href="#" class="panel-link">Samsung</a>
+                                <a href="#" class="panel-link">Xiaomi</a>
+                                <a href="#" class="panel-link">Huawei</a>
+                                <a href="#" class="panel-link">Lenovo</a>
+                                <a href="#" class="panel-link">HONOR</a>
+                                <a href="#" class="panel-link">Poco</a>
+                                <a href="#" class="panel-link">Bütün brendlər</a>
+                                <p class="panel-title">Düyməli telefonlar</p>
+                                <a href="#" class="panel-link">Energizer</a>
+                                <a href="#" class="panel-link">Nokia</a>
+                                <a href="#" class="panel-link">Panasonic</a>
+                                <a href="#" class="panel-link">Bütün brendlər</a>
+                                <p class="panel-title">Qol saatları</p>
+                                <a href="#" class="panel-link">Kişi saatları</a>
+                                <a href="#" class="panel-link">Qadın saatları</a>
+                                <a href="#" class="panel-link">Uşaq saatları</a>
+                                <a href="#" class="panel-link">Bütün saatlar</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Smart saatlar</p>
+                                <a href="#" class="panel-link">Apple</a>
+                                <a href="#" class="panel-link">Borofone</a>
+                                <a href="#" class="panel-link">Garmin</a>
+                                <a href="#" class="panel-link">Huawei</a>
+                                <a href="#" class="panel-link">Samsung</a>
+                                <a href="#" class="panel-link">Ttec</a>
+                                <a href="#" class="panel-link">Wonlex</a>
+                                <a href="#" class="panel-link">Xiaomi</a>
+                                <a href="#" class="panel-link">Smart saatlar üçün aksesuarlar</a>
+                                <a href="#" class="panel-link">Bütün brendlər</a>
+                                <p class="panel-title">Elektron kitablar</p>
+                                <a href="#" class="panel-link">PocketBook</a>
+                                <p class="panel-title">Aksesuarlar</p>
+                                <a href="#" class="panel-link">Telefon üçün keyslər</a>
+                                <a href="#" class="panel-link">Ekran qoruyucuları və plyonkalar</a>
+                                <a href="#" class="panel-link">Adapterlər</a>
+                                <a href="#" class="panel-link">USB-C və digər kabellər</a>
+                                <a href="#" class="panel-link">Simsiz enerji toplama cihazlar</a>
+                                <a href="#" class="panel-link">Power Bank</a>
+                                <a href="#" class="panel-link">Smartfon üçün trekerlar</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="2">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="3">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="4">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="5">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="6">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="7">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="8">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="9">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="10">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="11">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="12">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="13">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="14">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                        <div class="panel" data-panel="15">
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 1</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 2</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                            <div class="panel-column">
+                                <p class="panel-title">Başlıq 3</p>
+                                <a href="#" class="panel-link">Məhsul 1</a>
+                                <a href="#" class="panel-link">Məhsul 2</a>
+                                <a href="#" class="panel-link">Məhsul 3</a>
+                                <a href="#" class="panel-link">Məhsul 4</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog-banner">
+                        <img src="./assets/img/catalogBanner.webp" alt="">
                     </div>
                 </div>
             </section>
