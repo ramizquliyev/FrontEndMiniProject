@@ -222,7 +222,7 @@ if (catalogBtn && catalog) {
 }
 
 // Миниатюры меняют большое фото.
-var mainPhoto = document.querySelector(".gallery-main img");
+var mainPhoto = document.querySelector(".gallery-main .gallery-photo");
 var thumbs = document.querySelectorAll(".gallery-thumbs .thumb");
 
 thumbs.forEach(function (thumb) {
