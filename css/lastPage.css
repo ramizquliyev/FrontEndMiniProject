@@ -1,1 +1,36 @@
+#catalog-top-section {
+    display: flex;
+    justify-content: center;
+    padding-top: 28px;
+    padding-bottom: 10px;
+}
 
+#catalog-top-section .main-div {
+    width: 77pc;
+}
+
+#catalog-top-section .main-div .bread-div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 18px;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #909090;
+}
+
+#catalog-top-section .main-div .bread-div a {
+    color: #909090;
+    text-decoration: none;
+}
+
+#catalog-top-section .main-div .bread-div a:hover {
+    color: #333333;
+}
+
+#catalog-top-section .main-div .pageTitle {
+    font-family: sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+}
