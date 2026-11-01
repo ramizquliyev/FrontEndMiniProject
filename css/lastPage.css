@@ -28,75 +28,31 @@
     color: #333333;
 }
 
-#catalog-top-section .main-div .page-title {
+#catalog-top-section .main-div .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+#catalog-top-section .main-div .title-row .page-title {
     font-family: sans-serif;
     font-size: 32px;
     font-weight: 700;
     color: #1a1a1a;
 }
 
-#categories-section {
+#catalog-top-section .main-div .title-row .sort-line {
     display: flex;
-    justify-content: center;
-    padding-top: 22px;
-    padding-bottom: 10px;
-}
-
-#categories-section .main-div {
-    width: 77pc;
-}
-
-#categories-section .main-div .cat-title {
-    font-family: sans-serif;
-    font-size: 20px;
-    font-weight: 700;
-    color: #1a1a1a;
-    margin-bottom: 16px;
-}
-
-#categories-section .main-div .cat-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-}
-
-#categories-section .main-div .cat-row .cat-card {
-    width: 140px;
-    background-color: #f5f5f5;
-    border-radius: 18px;
-    padding: 14px 10px 12px 10px;
-    display: flex;
-    flex-direction: column;
+    justify-content: flex-end;
     align-items: center;
-    cursor: pointer;
-}
-
-#categories-section .main-div .cat-row .cat-card .cat-img-div {
-    width: 110px;
-    height: 90px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#categories-section .main-div .cat-row .cat-card .cat-img-div img {
-    width: 100px;
-    height: 80px;
-    object-fit: contain;
-}
-
-#categories-section .main-div .cat-row .cat-card .cat-name {
-    font-family: sans-serif;
-    font-size: 13px;
-    text-align: center;
-    margin-top: 8px;
-    color: #1a1a1a;
+    gap: 10px;
 }
 
 #catalog-products-section {
     display: flex;
     justify-content: center;
-    padding-top: 28px;
+    padding-top: 18px;
     padding-bottom: 40px;
 }
 
@@ -318,20 +274,9 @@
 
 #catalog-products-section .main-div .products-side {
     width: 920px;
-    display: flex;
-    flex-direction: column;
-    gap: 2pc;
 }
 
-#catalog-products-section .main-div .products-side .sort-line {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 22px;
-}
-
-#catalog-products-section .main-div .products-side .sort-line .sort-tabs {
+#catalog-top-section .main-div .title-row .sort-line .sort-tabs {
     background-color: #f4f4f4;
     border-radius: 30px;
     padding: 6px 8px;
@@ -340,9 +285,9 @@
     gap: 4px;
 }
 
-#catalog-products-section
+#catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .sort-tabs
     .sort-tab {
@@ -356,9 +301,9 @@
     cursor: pointer;
 }
 
-#catalog-products-section
+#catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .sort-tabs
     .sort-tab.active {
@@ -366,14 +311,14 @@
     font-weight: 700;
 }
 
-#catalog-products-section .main-div .products-side .sort-line .view-btns {
+#catalog-top-section .main-div .title-row .sort-line .view-btns {
     display: flex;
     gap: 8px;
 }
 
-#catalog-products-section
+#catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .view-btns
     .view-btn {
@@ -389,9 +334,9 @@
     padding: 0;
 }
 
-#catalog-products-section
+#catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .view-btns
     .view-btn
@@ -434,20 +379,7 @@
     margin-bottom: 12px;
 }
 
-html[data-theme="dark"] #catalog-top-section .main-div .page-title {
-    color: #f3f3f3;
-}
-
-html[data-theme="dark"] #categories-section .main-div .cat-title {
-    color: #f3f3f3;
-}
-
-html[data-theme="dark"]
-    #categories-section
-    .main-div
-    .cat-row
-    .cat-card
-    .cat-name {
+html[data-theme="dark"] #catalog-top-section .main-div .title-row .page-title {
     color: #f3f3f3;
 }
 
@@ -543,18 +475,18 @@ html[data-theme="dark"]
 }
 
 html[data-theme="dark"]
-    #catalog-products-section
+    #catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .sort-tabs {
     background-color: #1f1f1f;
 }
 
 html[data-theme="dark"]
-    #catalog-products-section
+    #catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .sort-tabs
     .sort-tab {
@@ -562,9 +494,9 @@ html[data-theme="dark"]
 }
 
 html[data-theme="dark"]
-    #catalog-products-section
+    #catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .sort-tabs
     .sort-tab.active {
@@ -572,9 +504,9 @@ html[data-theme="dark"]
 }
 
 html[data-theme="dark"]
-    #catalog-products-section
+    #catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .view-btns
     .view-btn {
@@ -582,9 +514,9 @@ html[data-theme="dark"]
 }
 
 html[data-theme="dark"]
-    #catalog-products-section
+    #catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .view-btns
     .view-btn
@@ -593,9 +525,9 @@ html[data-theme="dark"]
 }
 
 html[data-theme="dark"]
-    #catalog-products-section
+    #catalog-top-section
     .main-div
-    .products-side
+    .title-row
     .sort-line
     .view-btns
     .view-btn.active {
@@ -616,10 +548,6 @@ html[data-theme="dark"] #catalog-info-section .main-div .text-box p {
 
 @media (max-width: 1280px) {
     #catalog-top-section .main-div {
-        width: 95%;
-    }
-
-    #categories-section .main-div {
         width: 95%;
     }
 
@@ -657,7 +585,11 @@ html[data-theme="dark"] #catalog-info-section .main-div .text-box p {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    #catalog-top-section .main-div .page-title {
+    #catalog-top-section .main-div .title-row {
+        flex-wrap: wrap;
+    }
+
+    #catalog-top-section .main-div .title-row .page-title {
         font-size: 26px;
     }
 }
@@ -667,7 +599,7 @@ html[data-theme="dark"] #catalog-info-section .main-div .text-box p {
         grid-template-columns: 1fr;
     }
 
-    #catalog-top-section .main-div .page-title {
+    #catalog-top-section .main-div .title-row .page-title {
         font-size: 22px;
     }
 }
