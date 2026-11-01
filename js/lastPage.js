@@ -1,389 +1,288 @@
-// Серое меню, язык и тёмная тема — как на главной.
-(function () {
-    var nav = document.querySelector(".gray-nav");
-    if (!nav) {
-        return;
-    }
+// Серое меню
+let navButtons = document.querySelectorAll(".gray-nav .gray-nav-btn");
+let drop = document.querySelector(".gray-nav .gray-nav-drop");
+let dropButton = document.querySelector(".gray-nav .gray-nav-drop-btn");
+let dropMenu = document.querySelector(".gray-nav .gray-nav-menu");
+let langDrop = document.querySelector(".gray-nav .lang-drop");
+let langButton = document.querySelector(".gray-nav .lang-btn");
+let langButtonText = document.querySelector(".gray-nav .lang-btn-text");
+let langMenu = document.querySelector(".gray-nav .lang-menu");
+let themeButton = document.querySelector(".gray-nav .theme-switch");
 
-    var navButtons = nav.querySelectorAll(".gray-nav-btn");
-    var navList = nav.querySelector(".gray-nav-list");
-    var drop = nav.querySelector(".gray-nav-drop");
-    var dropButton = nav.querySelector(".gray-nav-drop-btn");
-    var dropMenu = nav.querySelector(".gray-nav-menu");
-    var langDrop = nav.querySelector(".lang-drop");
-    var langButton = nav.querySelector(".lang-btn");
-    var langButtonText = nav.querySelector(".lang-btn-text");
-    var langMenu = nav.querySelector(".lang-menu");
-    var themeButton = nav.querySelector(".theme-switch");
-    var themeKey = "theme";
-
-    navButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            navButtons.forEach(function (other) {
-                other.classList.remove("active");
-                other.removeAttribute("aria-current");
-            });
-            button.classList.add("active");
-            button.setAttribute("aria-current", "page");
+navButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+        navButtons.forEach((other) => {
+            other.classList.remove("active");
         });
+        this.classList.add("active");
     });
+});
 
-    function placeDropMenu() {
-        var rect = dropButton.getBoundingClientRect();
-        var menuWidth = 180;
-        var left = rect.left;
-
-        if (left + menuWidth > window.innerWidth - 12) {
-            left = Math.max(12, window.innerWidth - menuWidth - 12);
-        }
-
+// Меню Digər
+dropButton.addEventListener("click", function () {
+    if (dropMenu.hidden === true) {
+        langDrop.classList.remove("open");
+        langMenu.hidden = true;
+        let rect = dropButton.getBoundingClientRect();
         dropMenu.style.top = rect.bottom + 8 + "px";
-        dropMenu.style.left = left + "px";
-    }
-
-    function openDrop() {
-        closeLang();
-        placeDropMenu();
+        dropMenu.style.left = rect.left + "px";
         drop.classList.add("open");
-        dropButton.setAttribute("aria-expanded", "true");
         dropMenu.hidden = false;
-    }
-
-    function closeDrop() {
+    } else {
         drop.classList.remove("open");
-        dropButton.setAttribute("aria-expanded", "false");
         dropMenu.hidden = true;
     }
+});
 
-    function placeLangMenu() {
-        var rect = langButton.getBoundingClientRect();
-        var menuWidth = langMenu.offsetWidth;
-        var left = rect.left + (rect.width - menuWidth) / 2;
+dropMenu.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", function () {
+        drop.classList.remove("open");
+        dropMenu.hidden = true;
+    });
+});
 
-        if (left < 12) {
-            left = 12;
-        }
-        if (left + menuWidth > window.innerWidth - 12) {
-            left = window.innerWidth - menuWidth - 12;
-        }
-
+// Язык AZ / RU
+langButton.addEventListener("click", function () {
+    if (langMenu.hidden === true) {
+        drop.classList.remove("open");
+        dropMenu.hidden = true;
+        let rect = langButton.getBoundingClientRect();
         langMenu.style.top = rect.bottom + 8 + "px";
-        langMenu.style.left = left + "px";
-    }
-
-    function openLang() {
-        closeDrop();
+        langMenu.style.left = rect.left + "px";
         langMenu.hidden = false;
-        placeLangMenu();
         langDrop.classList.add("open");
-        langButton.setAttribute("aria-expanded", "true");
-    }
-
-    function closeLang() {
+    } else {
         langDrop.classList.remove("open");
-        langButton.setAttribute("aria-expanded", "false");
         langMenu.hidden = true;
     }
+});
 
-    dropButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        if (dropMenu.hidden) {
-            openDrop();
-        } else {
-            closeDrop();
-        }
-    });
-
-    langButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        if (langMenu.hidden) {
-            openLang();
-        } else {
-            closeLang();
-        }
-    });
-
-    langMenu.querySelectorAll(".lang-option").forEach(function (button) {
-        button.addEventListener("click", function () {
-            langMenu.querySelectorAll(".lang-option").forEach(function (other) {
-                other.classList.remove("is-selected");
-            });
-            button.classList.add("is-selected");
-            langButtonText.textContent = button.textContent;
-            closeLang();
+langMenu.querySelectorAll(".lang-option").forEach((button) => {
+    button.addEventListener("click", function () {
+        langMenu.querySelectorAll(".lang-option").forEach((other) => {
+            other.classList.remove("is-selected");
         });
+        this.classList.add("is-selected");
+        langButtonText.textContent = this.textContent;
+        langDrop.classList.remove("open");
+        langMenu.hidden = true;
     });
+});
 
-    document.addEventListener("click", function (event) {
-        if (!drop.contains(event.target)) {
-            closeDrop();
-        }
-        if (!langDrop.contains(event.target)) {
-            closeLang();
-        }
-    });
-
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            closeDrop();
-            closeLang();
-        }
-    });
-
-    dropMenu.querySelectorAll("button").forEach(function (button) {
-        button.addEventListener("click", function () {
-            closeDrop();
-        });
-    });
-
-    window.addEventListener("resize", function () {
-        if (!dropMenu.hidden) {
-            placeDropMenu();
-        }
-        if (!langMenu.hidden) {
-            placeLangMenu();
-        }
-    });
-
-    navList.addEventListener("scroll", function () {
-        if (!dropMenu.hidden) {
-            placeDropMenu();
-        }
-    });
-
-    function applyTheme(theme) {
-        var isDark = theme === "dark";
-
-        if (isDark) {
-            document.documentElement.setAttribute("data-theme", "dark");
-        } else {
-            document.documentElement.removeAttribute("data-theme");
-        }
-
-        themeButton.setAttribute("aria-pressed", isDark ? "true" : "false");
-        themeButton.setAttribute(
-            "aria-label",
-            isDark ? "Switch to light theme" : "Switch to dark theme",
-        );
+document.addEventListener("click", function (e) {
+    if (!drop.contains(e.target)) {
+        drop.classList.remove("open");
+        dropMenu.hidden = true;
     }
-
-    var savedTheme = "light";
-    try {
-        savedTheme = localStorage.getItem(themeKey) || "light";
-    } catch (error) {
-        savedTheme = "light";
+    if (!langDrop.contains(e.target)) {
+        langDrop.classList.remove("open");
+        langMenu.hidden = true;
     }
-    applyTheme(savedTheme);
+});
 
-    themeButton.addEventListener("click", function () {
-        var isDark =
-            document.documentElement.getAttribute("data-theme") === "dark";
-        var nextTheme = isDark ? "light" : "dark";
-
-        try {
-            localStorage.setItem(themeKey, nextTheme);
-        } catch (error) {}
-
-        applyTheme(nextTheme);
-    });
-})();
-
-var catalogBtn = document.querySelector(".catalog-btn");
-var catalog = document.querySelector("#header-second-section .catalog");
-var categories = document.querySelectorAll("#header-second-section .catalog-categories .category");
-var panels = document.querySelectorAll("#header-second-section .catalog-panels .panel");
-
-if (catalogBtn && catalog) {
-    catalogBtn.addEventListener("click", function () {
-        catalog.classList.toggle("show");
-        catalogBtn.classList.toggle("open");
-    });
-
-    categories.forEach(function (category) {
-        category.addEventListener("mouseover", function () {
-            var number = this.getAttribute("data-cat");
-            categories.forEach(function (c) {
-                c.classList.remove("active");
-            });
-            panels.forEach(function (p) {
-                p.classList.remove("active");
-            });
-            this.classList.add("active");
-            document.querySelector('.catalog-panels .panel[data-panel="' + number + '"]').classList.add("active");
-        });
-    });
-
-    document.addEventListener("click", function (e) {
-        if (!catalog.contains(e.target) && !catalogBtn.contains(e.target)) {
-            catalog.classList.remove("show");
-            catalogBtn.classList.remove("open");
-        }
-    });
+// Тема
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
 }
 
-var sortTabs = document.querySelectorAll(".sort-tab");
-var productsBox = document.querySelector("#catalog-products-section .products-side .products");
-var firstCards = [];
-
-if (productsBox) {
-    var startCards = productsBox.querySelectorAll(".item");
-    startCards.forEach(function (card) {
-        firstCards.push(card);
-    });
-}
-
-function readPrice(item) {
-    var el = item.querySelector(".currentPrice");
-    if (!el) {
-        return 0;
-    }
-    var text = el.innerText;
-    text = text.replace(" ₼", "");
-    text = text.replace("₼", "");
-    return Number(text);
-}
-
-function readOldPrice(item) {
-    var el = item.querySelector(".discount");
-    if (!el) {
-        return 0;
-    }
-    var text = el.innerText;
-    text = text.replace(" ₼", "");
-    text = text.replace("₼", "");
-    return Number(text);
-}
-
-function sortCards(name) {
-    if (!productsBox) {
-        return;
-    }
-
-    var list = [];
-    var i;
-
-    if (name === "popular") {
-        for (i = 0; i < firstCards.length; i++) {
-            list.push(firstCards[i]);
-        }
+themeButton.addEventListener("click", function () {
+    if (document.documentElement.getAttribute("data-theme") === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
     } else {
-        var cards = productsBox.querySelectorAll(".item");
-        for (i = 0; i < cards.length; i++) {
-            list.push(cards[i]);
-        }
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+    }
+});
+
+// Каталог
+let catalogBtn = document.querySelector("#header-second-section .catalog-btn");
+let catalog = document.querySelector("#header-second-section .catalog");
+let categories = document.querySelectorAll("#header-second-section .catalog-categories .category");
+let panels = document.querySelectorAll("#header-second-section .catalog-panels .panel");
+
+catalogBtn.addEventListener("click", function () {
+    catalog.classList.toggle("show");
+    catalogBtn.classList.toggle("open");
+});
+
+categories.forEach((category) => {
+    category.addEventListener("mouseover", function () {
+        let number = this.getAttribute("data-cat");
+        categories.forEach((c) => {
+            c.classList.remove("active");
+        });
+        panels.forEach((p) => {
+            p.classList.remove("active");
+        });
+        this.classList.add("active");
+        document.querySelector('.catalog-panels .panel[data-panel="' + number + '"]').classList.add("active");
+    });
+});
+
+document.addEventListener("click", function (e) {
+    if (!catalog.contains(e.target) && !catalogBtn.contains(e.target)) {
+        catalog.classList.remove("show");
+        catalogBtn.classList.remove("open");
+    }
+});
+
+// Сортировка товаров
+let sortTabs = document.querySelectorAll("#catalog-top-section .sort-tab");
+let productsBox = document.querySelector("#catalog-products-section .products-side .products");
+let firstCards = [];
+document.querySelectorAll("#catalog-products-section .products-side .products .item").forEach((card) => {
+    firstCards.push(card);
+});
+
+sortTabs.forEach((tab) => {
+    tab.addEventListener("click", function () {
+        sortTabs.forEach((other) => {
+            other.classList.remove("active");
+        });
+        this.classList.add("active");
+
+        let name = this.getAttribute("data-tab");
+        let list = [];
+        firstCards.forEach((card) => {
+            list.push(card);
+        });
 
         if (name === "discount") {
             list.sort(function (a, b) {
-                var aOff = readOldPrice(a) - readPrice(a);
-                var bOff = readOldPrice(b) - readPrice(b);
-                return bOff - aOff;
+                let aOld = 0;
+                let bOld = 0;
+                if (a.querySelector(".discount")) {
+                    aOld = Number(a.querySelector(".discount").innerText.replace("₼", ""));
+                }
+                if (b.querySelector(".discount")) {
+                    bOld = Number(b.querySelector(".discount").innerText.replace("₼", ""));
+                }
+                let aNow = Number(a.querySelector(".currentPrice").innerText.replace("₼", ""));
+                let bNow = Number(b.querySelector(".currentPrice").innerText.replace("₼", ""));
+                return (bOld - bNow) - (aOld - aNow);
             });
         }
 
         if (name === "cheap") {
             list.sort(function (a, b) {
-                return readPrice(a) - readPrice(b);
+                let aNow = Number(a.querySelector(".currentPrice").innerText.replace("₼", ""));
+                let bNow = Number(b.querySelector(".currentPrice").innerText.replace("₼", ""));
+                return aNow - bNow;
             });
         }
 
         if (name === "expensive") {
             list.sort(function (a, b) {
-                return readPrice(b) - readPrice(a);
+                let aNow = Number(a.querySelector(".currentPrice").innerText.replace("₼", ""));
+                let bNow = Number(b.querySelector(".currentPrice").innerText.replace("₼", ""));
+                return bNow - aNow;
             });
         }
-    }
 
-    for (i = 0; i < list.length; i++) {
-        productsBox.appendChild(list[i]);
-    }
-}
-
-sortTabs.forEach(function (tab) {
-    tab.addEventListener("click", function () {
-        sortTabs.forEach(function (other) {
-            other.classList.remove("active");
+        list.forEach((card) => {
+            productsBox.appendChild(card);
         });
-        this.classList.add("active");
-        sortCards(this.getAttribute("data-tab"));
     });
 });
 
-var viewBtns = document.querySelectorAll(".view-btn");
-viewBtns.forEach(function (btn) {
+// Вид карточек
+let viewBtns = document.querySelectorAll("#catalog-top-section .view-btn");
+viewBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
-        viewBtns.forEach(function (other) {
+        viewBtns.forEach((other) => {
             other.classList.remove("active");
         });
         this.classList.add("active");
     });
 });
 
-var moreBtn = document.querySelector(".more-btn");
-var extraCats = document.querySelector(".extra-cats");
+// Daha çox / Daha az
+let moreBtn = document.querySelector("#catalog-products-section .more-btn");
+let extraCats = document.querySelector("#catalog-products-section .extra-cats");
 
-if (moreBtn && extraCats) {
-    moreBtn.addEventListener("click", function () {
-        extraCats.classList.toggle("open");
-        if (extraCats.classList.contains("open")) {
-            moreBtn.innerHTML = "Daha az <span>˄</span>";
-        } else {
-            moreBtn.innerHTML = "Daha çox <span>˅</span>";
-        }
-    });
-}
+moreBtn.addEventListener("click", function () {
+    extraCats.classList.toggle("open");
+    if (extraCats.classList.contains("open")) {
+        moreBtn.innerHTML = "Daha az <span>˄</span>";
+    } else {
+        moreBtn.innerHTML = "Daha çox <span>˅</span>";
+    }
+});
 
-var pageNums = document.querySelectorAll(".page-num");
-pageNums.forEach(function (btn) {
+// Пагинация
+let pageNums = document.querySelectorAll("#catalog-pages-section .page-num");
+let pageArrows = document.querySelectorAll("#catalog-pages-section .page-arrow");
+let leftPage = pageArrows[0];
+let rightPage = pageArrows[1];
+
+pageNums.forEach((btn) => {
     btn.addEventListener("click", function () {
-        pageNums.forEach(function (other) {
+        pageNums.forEach((other) => {
             other.classList.remove("active");
         });
         this.classList.add("active");
     });
 });
 
-var pageArrows = document.querySelectorAll(".page-arrow");
-pageArrows.forEach(function (arrow, index) {
-    arrow.addEventListener("click", function () {
-        var current = 0;
-        pageNums.forEach(function (num, i) {
-            if (num.classList.contains("active")) {
-                current = i;
-            }
-        });
-
-        if (index === 0 && current > 0) {
-            current = current - 1;
+leftPage.addEventListener("click", function () {
+    let prevNum;
+    let sawActive = false;
+    pageNums.forEach((num) => {
+        if (num.classList.contains("active")) {
+            sawActive = true;
         }
-        if (index === 1 && current < pageNums.length - 1) {
-            current = current + 1;
+        if (sawActive === false) {
+            prevNum = num;
         }
-
-        pageNums.forEach(function (num) {
+    });
+    if (prevNum) {
+        pageNums.forEach((num) => {
             num.classList.remove("active");
         });
-        pageNums[current].classList.add("active");
-    });
+        prevNum.classList.add("active");
+    }
 });
 
-var recentList = document.querySelector("#recent-section .list-wrap .products");
-var leftBtn = document.querySelector("#recent-section .left-btn");
-var rightBtn = document.querySelector("#recent-section .right-btn");
-var move = 0;
+rightPage.addEventListener("click", function () {
+    let nextNum;
+    let found = false;
+    pageNums.forEach((num) => {
+        if (found === true) {
+            if (nextNum === undefined) {
+                nextNum = num;
+            }
+        }
+        if (num.classList.contains("active")) {
+            found = true;
+        }
+    });
+    if (nextNum) {
+        pageNums.forEach((num) => {
+            num.classList.remove("active");
+        });
+        nextNum.classList.add("active");
+    }
+});
 
-if (recentList && leftBtn && rightBtn) {
-    leftBtn.addEventListener("click", function () {
-        move = move + 314;
-        if (move > 0) {
-            move = 0;
-        }
-        recentList.style.marginLeft = move + "px";
-    });
-    rightBtn.addEventListener("click", function () {
-        move = move - 314;
-        if (move < -628) {
-            move = -628;
-        }
-        recentList.style.marginLeft = move + "px";
-    });
-}
+// Стрелки recent
+let recentList = document.querySelector("#recent-section .list-wrap .products");
+let leftBtn = document.querySelector("#recent-section .left-btn");
+let rightBtn = document.querySelector("#recent-section .right-btn");
+let move = 0;
+
+leftBtn.addEventListener("click", function () {
+    move = move + 314;
+    if (move > 0) {
+        move = 0;
+    }
+    recentList.style.marginLeft = move + "px";
+});
+
+rightBtn.addEventListener("click", function () {
+    move = move - 314;
+    if (move < -628) {
+        move = -628;
+    }
+    recentList.style.marginLeft = move + "px";
+});
