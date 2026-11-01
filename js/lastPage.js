@@ -222,12 +222,89 @@ if (catalogBtn && catalog) {
 }
 
 var sortTabs = document.querySelectorAll(".sort-tab");
+var productsBox = document.querySelector("#catalog-products-section .products-side .products");
+var firstCards = [];
+
+if (productsBox) {
+    var startCards = productsBox.querySelectorAll(".item");
+    startCards.forEach(function (card) {
+        firstCards.push(card);
+    });
+}
+
+function readPrice(item) {
+    var el = item.querySelector(".currentPrice");
+    if (!el) {
+        return 0;
+    }
+    var text = el.innerText;
+    text = text.replace(" ₼", "");
+    text = text.replace("₼", "");
+    return Number(text);
+}
+
+function readOldPrice(item) {
+    var el = item.querySelector(".discount");
+    if (!el) {
+        return 0;
+    }
+    var text = el.innerText;
+    text = text.replace(" ₼", "");
+    text = text.replace("₼", "");
+    return Number(text);
+}
+
+function sortCards(name) {
+    if (!productsBox) {
+        return;
+    }
+
+    var list = [];
+    var i;
+
+    if (name === "popular") {
+        for (i = 0; i < firstCards.length; i++) {
+            list.push(firstCards[i]);
+        }
+    } else {
+        var cards = productsBox.querySelectorAll(".item");
+        for (i = 0; i < cards.length; i++) {
+            list.push(cards[i]);
+        }
+
+        if (name === "discount") {
+            list.sort(function (a, b) {
+                var aOff = readOldPrice(a) - readPrice(a);
+                var bOff = readOldPrice(b) - readPrice(b);
+                return bOff - aOff;
+            });
+        }
+
+        if (name === "cheap") {
+            list.sort(function (a, b) {
+                return readPrice(a) - readPrice(b);
+            });
+        }
+
+        if (name === "expensive") {
+            list.sort(function (a, b) {
+                return readPrice(b) - readPrice(a);
+            });
+        }
+    }
+
+    for (i = 0; i < list.length; i++) {
+        productsBox.appendChild(list[i]);
+    }
+}
+
 sortTabs.forEach(function (tab) {
     tab.addEventListener("click", function () {
         sortTabs.forEach(function (other) {
             other.classList.remove("active");
         });
         this.classList.add("active");
+        sortCards(this.getAttribute("data-tab"));
     });
 });
 

@@ -295,6 +295,33 @@
     padding: 8px 14px;
     border-radius: 22px;
     cursor: pointer;
+    position: relative;
+}
+
+#catalog-top-section
+    .main-div
+    .title-row
+    .sort-line
+    .sort-tabs
+    .sort-tab::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 4px;
+    width: 0;
+    height: 2px;
+    background-color: #8a8a8a;
+    transform: translateX(-50%);
+    transition: all 0.5s;
+}
+
+#catalog-top-section
+    .main-div
+    .title-row
+    .sort-line
+    .sort-tabs
+    .sort-tab:hover::after {
+    width: 80%;
 }
 
 #catalog-top-section
@@ -305,6 +332,16 @@
     .sort-tab.active {
     color: #1a1a1a;
     font-weight: 700;
+}
+
+#catalog-top-section
+    .main-div
+    .title-row
+    .sort-line
+    .sort-tabs
+    .sort-tab.active::after {
+    width: 80%;
+    background-color: #1a1a1a;
 }
 
 #catalog-top-section .main-div .title-row .sort-line .view-btns {
@@ -419,10 +456,12 @@
     justify-content: center;
     padding-top: 40px;
     padding-bottom: 70px;
+    overflow-x: hidden;
 }
 
 #recent-section .main-div {
     width: 77pc;
+    overflow-x: hidden;
 }
 
 #recent-section .main-div .recent-top {
@@ -465,6 +504,8 @@
 #recent-section .main-div .list-wrap {
     overflow: hidden;
     width: 100%;
+    padding-top: 50px;
+    padding-bottom: 10px;
 }
 
 #recent-section .main-div .list-wrap .products {
@@ -601,6 +642,26 @@ html[data-theme="dark"]
     .sort-tabs
     .sort-tab.active {
     color: #f3f3f3;
+}
+
+html[data-theme="dark"]
+    #catalog-top-section
+    .main-div
+    .title-row
+    .sort-line
+    .sort-tabs
+    .sort-tab::after {
+    background-color: #9a9a9a;
+}
+
+html[data-theme="dark"]
+    #catalog-top-section
+    .main-div
+    .title-row
+    .sort-line
+    .sort-tabs
+    .sort-tab.active::after {
+    background-color: #f3f3f3;
 }
 
 html[data-theme="dark"]
