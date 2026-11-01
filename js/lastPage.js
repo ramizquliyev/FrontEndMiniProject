@@ -221,6 +221,26 @@ if (catalogBtn && catalog) {
     });
 }
 
+var sortTabs = document.querySelectorAll(".sort-tab");
+sortTabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+        sortTabs.forEach(function (other) {
+            other.classList.remove("active");
+        });
+        this.classList.add("active");
+    });
+});
+
+var viewBtns = document.querySelectorAll(".view-btn");
+viewBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        viewBtns.forEach(function (other) {
+            other.classList.remove("active");
+        });
+        this.classList.add("active");
+    });
+});
+
 var moreBtn = document.querySelector(".more-btn");
 var extraCats = document.querySelector(".extra-cats");
 
