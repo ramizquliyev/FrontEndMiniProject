@@ -254,3 +254,59 @@ if (moreBtn && extraCats) {
         }
     });
 }
+
+var pageNums = document.querySelectorAll(".page-num");
+pageNums.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+        pageNums.forEach(function (other) {
+            other.classList.remove("active");
+        });
+        this.classList.add("active");
+    });
+});
+
+var pageArrows = document.querySelectorAll(".page-arrow");
+pageArrows.forEach(function (arrow, index) {
+    arrow.addEventListener("click", function () {
+        var current = 0;
+        pageNums.forEach(function (num, i) {
+            if (num.classList.contains("active")) {
+                current = i;
+            }
+        });
+
+        if (index === 0 && current > 0) {
+            current = current - 1;
+        }
+        if (index === 1 && current < pageNums.length - 1) {
+            current = current + 1;
+        }
+
+        pageNums.forEach(function (num) {
+            num.classList.remove("active");
+        });
+        pageNums[current].classList.add("active");
+    });
+});
+
+var recentList = document.querySelector("#recent-section .list-wrap .products");
+var leftBtn = document.querySelector("#recent-section .left-btn");
+var rightBtn = document.querySelector("#recent-section .right-btn");
+var move = 0;
+
+if (recentList && leftBtn && rightBtn) {
+    leftBtn.addEventListener("click", function () {
+        move = move + 314;
+        if (move > 0) {
+            move = 0;
+        }
+        recentList.style.marginLeft = move + "px";
+    });
+    rightBtn.addEventListener("click", function () {
+        move = move - 314;
+        if (move < -628) {
+            move = -628;
+        }
+        recentList.style.marginLeft = move + "px";
+    });
+}
