@@ -100,11 +100,7 @@ let prevButton = arrowButtons[0];
 let nextButton = arrowButtons[1];
 
 let track = document.createElement("div");
-track.style.display = "flex";
-track.style.alignItems = "inherit";
-track.style.gap = "inherit";
-track.style.flexShrink = "0";
-track.style.transition = "transform 0.5s ease";
+track.classList.add("slider-track");
 
 slides.forEach((slide) => {
     track.appendChild(slide);

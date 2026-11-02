@@ -425,6 +425,14 @@ html[data-theme="dark"] .samButtons button img {
     align-items: center;
 }
 
+.slider-track {
+    display: flex;
+    align-items: inherit;
+    gap: inherit;
+    flex-shrink: 0;
+    transition: transform 0.5s ease;
+}
+
 #main-slider {
     margin-top: 2pc;
 }
