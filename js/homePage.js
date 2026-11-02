@@ -1,390 +1,199 @@
-// Gray nav under the black promo bar.
-// Handles the active item, the "Digər" menu, the AZ/RU menu, and the theme.
+// Серое меню
+let navButtons = document.querySelectorAll(".gray-nav .gray-nav-btn");
+let drop = document.querySelector(".gray-nav .gray-nav-drop");
+let dropButton = document.querySelector(".gray-nav .gray-nav-drop-btn");
+let dropMenu = document.querySelector(".gray-nav .gray-nav-menu");
+let langDrop = document.querySelector(".gray-nav .lang-drop");
+let langButton = document.querySelector(".gray-nav .lang-btn");
+let langButtonText = document.querySelector(".gray-nav .lang-btn-text");
+let langMenu = document.querySelector(".gray-nav .lang-menu");
+let themeButton = document.querySelector(".gray-nav .theme-switch");
 
-(function () {
-    var nav = document.querySelector(".gray-nav");
-    if (!nav) {
-        return;
-    }
-
-    var navButtons = nav.querySelectorAll(".gray-nav-btn");
-    var navList = nav.querySelector(".gray-nav-list");
-    var drop = nav.querySelector(".gray-nav-drop");
-    var dropButton = nav.querySelector(".gray-nav-drop-btn");
-    var dropMenu = nav.querySelector(".gray-nav-menu");
-    var langDrop = nav.querySelector(".lang-drop");
-    var langButton = nav.querySelector(".lang-btn");
-    var langButtonText = nav.querySelector(".lang-btn-text");
-    var langMenu = nav.querySelector(".lang-menu");
-    var themeButton = nav.querySelector(".theme-switch");
-    var themeKey = "theme";
-
-    // Clicking a nav item makes it the active (black) one.
-    navButtons.forEach(function (button) {
-        button.addEventListener("click", function () {
-            navButtons.forEach(function (other) {
-                other.classList.remove("active");
-                other.removeAttribute("aria-current");
-            });
-            button.classList.add("active");
-            button.setAttribute("aria-current", "page");
+navButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+        navButtons.forEach((other) => {
+            other.classList.remove("active");
         });
+        this.classList.add("active");
     });
+});
 
-    // Keep the menu lined up under the "Digər" button.
-    // position:fixed so the sideways scroll on small screens does not clip it.
-    function placeDropMenu() {
-        var rect = dropButton.getBoundingClientRect();
-        var menuWidth = 180;
-        var left = rect.left;
-
-        if (left + menuWidth > window.innerWidth - 12) {
-            left = Math.max(12, window.innerWidth - menuWidth - 12);
-        }
-
+// Меню Digər
+dropButton.addEventListener("click", function () {
+    if (dropMenu.hidden === true) {
+        langDrop.classList.remove("open");
+        langMenu.hidden = true;
+        let rect = dropButton.getBoundingClientRect();
         dropMenu.style.top = rect.bottom + 8 + "px";
-        dropMenu.style.left = left + "px";
-    }
-
-    function openDrop() {
-        closeLang();
-        placeDropMenu();
+        dropMenu.style.left = rect.left + "px";
         drop.classList.add("open");
-        dropButton.setAttribute("aria-expanded", "true");
         dropMenu.hidden = false;
-    }
-
-    function closeDrop() {
+    } else {
         drop.classList.remove("open");
-        dropButton.setAttribute("aria-expanded", "false");
         dropMenu.hidden = true;
     }
+});
 
-    // Center the language card under the AZ/RU button.
-    function placeLangMenu() {
-        var rect = langButton.getBoundingClientRect();
-        var menuWidth = langMenu.offsetWidth;
-        var left = rect.left + (rect.width - menuWidth) / 2;
+dropMenu.querySelectorAll("button").forEach((button) => {
+    button.addEventListener("click", function () {
+        drop.classList.remove("open");
+        dropMenu.hidden = true;
+    });
+});
 
-        if (left < 12) {
-            left = 12;
-        }
-        if (left + menuWidth > window.innerWidth - 12) {
-            left = window.innerWidth - menuWidth - 12;
-        }
-
+// Язык AZ / RU
+langButton.addEventListener("click", function () {
+    if (langMenu.hidden === true) {
+        drop.classList.remove("open");
+        dropMenu.hidden = true;
+        let rect = langButton.getBoundingClientRect();
         langMenu.style.top = rect.bottom + 8 + "px";
-        langMenu.style.left = left + "px";
-    }
-
-    function openLang() {
-        closeDrop();
         langMenu.hidden = false;
-        placeLangMenu();
+        langMenu.style.left = rect.left + (rect.width - langMenu.offsetWidth) / 2 + "px";
         langDrop.classList.add("open");
-        langButton.setAttribute("aria-expanded", "true");
-    }
-
-    function closeLang() {
+    } else {
         langDrop.classList.remove("open");
-        langButton.setAttribute("aria-expanded", "false");
         langMenu.hidden = true;
     }
+});
 
-    // Clicking "Digər" opens the menu; clicking it again closes it.
-    // stopPropagation so the document listener does not close it on this same click.
-    dropButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        if (dropMenu.hidden) {
-            openDrop();
-        } else {
-            closeDrop();
-        }
-    });
-
-    // Clicking AZ/RU opens its menu; clicking it again closes it.
-    langButton.addEventListener("click", function (event) {
-        event.stopPropagation();
-        if (langMenu.hidden) {
-            openLang();
-        } else {
-            closeLang();
-        }
-    });
-
-    // Picking AZ or RU only changes the label. The page is not translated.
-    langMenu.querySelectorAll(".lang-option").forEach(function (button) {
-        button.addEventListener("click", function () {
-            langMenu.querySelectorAll(".lang-option").forEach(function (other) {
-                other.classList.remove("is-selected");
-            });
-            button.classList.add("is-selected");
-            langButtonText.textContent = button.textContent;
-            closeLang();
+langMenu.querySelectorAll(".lang-option").forEach((button) => {
+    button.addEventListener("click", function () {
+        langMenu.querySelectorAll(".lang-option").forEach((other) => {
+            other.classList.remove("is-selected");
         });
-    });
-
-    // A click outside either menu closes that menu.
-    document.addEventListener("click", function (event) {
-        if (!drop.contains(event.target)) {
-            closeDrop();
-        }
-        if (!langDrop.contains(event.target)) {
-            closeLang();
-        }
-    });
-
-    // Escape closes whichever menu is open.
-    document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape") {
-            closeDrop();
-            closeLang();
-        }
-    });
-
-    // Choosing one of the three items closes the menu.
-    dropMenu.querySelectorAll("button").forEach(function (button) {
-        button.addEventListener("click", function () {
-            closeDrop();
-        });
-    });
-
-    window.addEventListener("resize", function () {
-        if (!dropMenu.hidden) {
-            placeDropMenu();
-        }
-        if (!langMenu.hidden) {
-            placeLangMenu();
-        }
-    });
-
-    navList.addEventListener("scroll", function () {
-        if (!dropMenu.hidden) {
-            placeDropMenu();
-        }
-    });
-
-    // Colors come from CSS variables. data-theme="dark" on <html> switches them.
-    function applyTheme(theme) {
-        var isDark = theme === "dark";
-
-        if (isDark) {
-            document.documentElement.setAttribute("data-theme", "dark");
-        } else {
-            document.documentElement.removeAttribute("data-theme");
-        }
-
-        themeButton.setAttribute("aria-pressed", isDark ? "true" : "false");
-        themeButton.setAttribute(
-            "aria-label",
-            isDark ? "Switch to light theme" : "Switch to dark theme",
-        );
-    }
-
-    // Restore the theme the visitor picked last time.
-    var savedTheme = "light";
-    try {
-        savedTheme = localStorage.getItem(themeKey) || "light";
-    } catch (error) {
-        savedTheme = "light";
-    }
-    applyTheme(savedTheme);
-
-    themeButton.addEventListener("click", function () {
-        var isDark =
-            document.documentElement.getAttribute("data-theme") === "dark";
-        var nextTheme = isDark ? "light" : "dark";
-
-        try {
-            localStorage.setItem(themeKey, nextTheme);
-        } catch (error) {
-            // Storage can be blocked. The theme still changes for this visit.
-        }
-
-        applyTheme(nextTheme);
-    });
-})();
-
-// Main image slider: autoplay every 4s, arrows, loop, translateX.
-(function () {
-    var imagesContainer = document.querySelector("#main-slider .images");
-    if (!imagesContainer) {
-        return;
-    }
-
-    // Slide photos only (not the arrow icons inside the buttons).
-    var slides = imagesContainer.querySelectorAll(":scope > img");
-    if (slides.length < 2) {
-        return;
-    }
-
-    // Buttons sit inside .images, so we move only the photos in a track.
-    // Then translateX on the track does not move the arrows.
-    var track = document.createElement("div");
-    track.style.display = "flex";
-    track.style.alignItems = "inherit";
-    track.style.gap = "inherit";
-    track.style.flexShrink = "0";
-    track.style.transition = "transform 0.5s ease";
-
-    for (var i = 0; i < slides.length; i++) {
-        track.appendChild(slides[i]);
-    }
-    // Put the track before the buttons so the arrows stay clickable on top.
-    imagesContainer.insertBefore(
-        track,
-        imagesContainer.querySelector(".buttons"),
-    );
-
-    var currentIndex = 0;
-    var intervalId;
-    var isAnimating = false;
-
-    // First button = left arrow, second button = right arrow.
-    var arrowButtons = imagesContainer.querySelectorAll(".buttons button");
-    var prevButton = arrowButtons[0];
-    var nextButton = arrowButtons[1];
-
-    // Furthest the track may move: the last slide, not the empty space after it.
-    function getMaxOffset() {
-        var lastSlide = slides[slides.length - 1];
-        var lastSlideLeft = lastSlide.offsetLeft - slides[0].offsetLeft;
-        var maxOffset = track.scrollWidth - imagesContainer.clientWidth;
-        if (maxOffset > lastSlideLeft) {
-            maxOffset = lastSlideLeft;
-        }
-        if (maxOffset < 0) {
-            maxOffset = 0;
-        }
-        return maxOffset;
-    }
-
-    function goToSlide(index) {
-        // Ignore extra clicks while the 0.5s animation is running.
-        if (isAnimating) {
-            return;
-        }
-
-        // Index is already wrapped in nextSlide / prevSlide. Use it as-is.
-        currentIndex = index;
-        isAnimating = true;
-
-        // Step = distance between two neighbouring slides, including the gap.
-        var step = slides[1].offsetLeft - slides[0].offsetLeft;
-        // Translate only AFTER the index is corrected, never to an empty slot.
-        var offset = currentIndex * step;
-        var maxOffset = getMaxOffset();
-        if (offset > maxOffset) {
-            offset = maxOffset;
-        }
-
-        track.style.transform = "translateX(-" + offset + "px)";
-
-        setTimeout(function () {
-            isAnimating = false;
-        }, 500);
-    }
-
-    function nextSlide() {
-        if (isAnimating) {
-            return;
-        }
-        var step = slides[1].offsetLeft - slides[0].offsetLeft;
-        var maxOffset = getMaxOffset();
-        // Already on the last real slide (do not take one more step into empty space).
-        var atLastVisible = maxOffset > 0 && currentIndex * step >= maxOffset;
-        // Real last index is slides.length - 1 (not slides.length).
-        if (currentIndex >= slides.length - 1 || atLastVisible) {
-            currentIndex = 0;
-        } else {
-            currentIndex++;
-        }
-        goToSlide(currentIndex);
-    }
-
-    function prevSlide() {
-        if (isAnimating) {
-            return;
-        }
-        if (currentIndex <= 0) {
-            currentIndex = slides.length - 1;
-        } else {
-            currentIndex--;
-        }
-        goToSlide(currentIndex);
-    }
-
-    function startAutoplay() {
-        intervalId = setInterval(nextSlide, 4000);
-    }
-
-    function resetAutoplay() {
-        clearInterval(intervalId);
-        startAutoplay();
-    }
-
-    prevButton.addEventListener("click", function () {
-        prevSlide();
-        resetAutoplay();
-    });
-
-    nextButton.addEventListener("click", function () {
-        nextSlide();
-        resetAutoplay();
-    });
-
-    startAutoplay();
-})();
-
-
-
-var tabmenu = document.querySelectorAll(
-    "#tabmenu-text-section .main-div .tabMenu-div ul li a",
-);
-
-tabmenu.forEach((element) => {
-    element.addEventListener("click", function (a) {
-        a.preventDefault();
-        if (!this.classList.contains("activeTabMenuElem")) {
-            var active = document.querySelector(
-                "#tabmenu-text-section .main-div .tabMenu-div ul li .activeTabMenuElem",
-            );
-
-            active.classList.remove("activeTabMenuElem");
-            this.classList.add("activeTabMenuElem");
-        }
+        this.classList.add("is-selected");
+        langButtonText.textContent = this.textContent;
+        langDrop.classList.remove("open");
+        langMenu.hidden = true;
     });
 });
 
-
-
-var tabs = document.querySelectorAll("#tabmenu-text-section .main-div .tabMenu-div ul li a");
-var productBlocks = document.querySelectorAll("#tabMenuProducts-section .products");
-
-
-
-tabs.forEach(element => {
-    element.addEventListener("click",function(){
-        tabs.forEach(t => t.classList.remove("activeTabMenuElem"));      
-        productBlocks.forEach(b => b.classList.remove("active"));        
-
-        element.classList.add("activeTabMenuElem");                      
-        document.getElementById(element.dataset.tab).classList.add("active");   
-    })
+document.addEventListener("click", function (e) {
+    if (!drop.contains(e.target)) {
+        drop.classList.remove("open");
+        dropMenu.hidden = true;
+    }
+    if (!langDrop.contains(e.target)) {
+        langDrop.classList.remove("open");
+        langMenu.hidden = true;
+    }
 });
 
+// Тема
+if (localStorage.getItem("theme") === "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+}
 
-/* Открытие и закрытие окна с видео */
-var cards = document.querySelectorAll("#videos-section .video-card");
-var modal = document.querySelector("#videos-section .video-modal");
-var iframes = document.querySelectorAll("#videos-section .video-modal-frame iframe");
-var closeBtn = document.querySelector("#videos-section .video-modal-close");
+themeButton.addEventListener("click", function () {
+    if (document.documentElement.getAttribute("data-theme") === "dark") {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("theme", "light");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+        localStorage.setItem("theme", "dark");
+    }
+});
 
-cards.forEach(function (card, i) {
+// Слайдер
+let imagesContainer = document.querySelector("#main-slider .images");
+let slides = document.querySelectorAll("#main-slider .images > img");
+let arrowButtons = document.querySelectorAll("#main-slider .images .buttons button");
+let prevButton = arrowButtons[0];
+let nextButton = arrowButtons[1];
+
+let track = document.createElement("div");
+track.style.display = "flex";
+track.style.alignItems = "inherit";
+track.style.gap = "inherit";
+track.style.flexShrink = "0";
+track.style.transition = "transform 0.5s ease";
+
+slides.forEach((slide) => {
+    track.appendChild(slide);
+});
+imagesContainer.insertBefore(track, document.querySelector("#main-slider .images .buttons"));
+
+let nomer = 0;
+let timer;
+
+function goSlide() {
+    let shag = slides[1].offsetLeft - slides[0].offsetLeft;
+    let sdvig = nomer * shag;
+    let maxSdvig = track.scrollWidth - imagesContainer.clientWidth;
+    if (sdvig > maxSdvig) {
+        sdvig = maxSdvig;
+    }
+    track.style.transform = "translateX(-" + sdvig + "px)";
+}
+
+function nextSlide() {
+    let shag = slides[1].offsetLeft - slides[0].offsetLeft;
+    let maxSdvig = track.scrollWidth - imagesContainer.clientWidth;
+    if (nomer >= slides.length - 1 || nomer * shag >= maxSdvig) {
+        nomer = 0;
+    } else {
+        nomer = nomer + 1;
+    }
+    goSlide();
+}
+
+function prevSlide() {
+    if (nomer <= 0) {
+        nomer = slides.length - 1;
+    } else {
+        nomer = nomer - 1;
+    }
+    goSlide();
+}
+
+function startSlider() {
+    timer = setInterval(nextSlide, 4000);
+}
+
+prevButton.addEventListener("click", function () {
+    prevSlide();
+    clearInterval(timer);
+    startSlider();
+});
+
+nextButton.addEventListener("click", function () {
+    nextSlide();
+    clearInterval(timer);
+    startSlider();
+});
+
+startSlider();
+
+// Табы с товарами
+let tabs = document.querySelectorAll("#tabmenu-text-section .main-div .tabMenu-div ul li a");
+let productBlocks = document.querySelectorAll("#tabMenuProducts-section .products");
+
+tabs.forEach((a) => {
+    a.addEventListener("click", function (e) {
+        e.preventDefault();
+        tabs.forEach((t) => {
+            t.classList.remove("activeTabMenuElem");
+        });
+        productBlocks.forEach((b) => {
+            b.classList.remove("active");
+        });
+        this.classList.add("activeTabMenuElem");
+        document.getElementById(this.getAttribute("data-tab")).classList.add("active");
+    });
+});
+
+// Видео-окно
+let cards = document.querySelectorAll("#videos-section .video-card");
+let modal = document.querySelector("#videos-section .video-modal");
+let iframes = document.querySelectorAll("#videos-section .video-modal-frame iframe");
+let closeBtn = document.querySelector("#videos-section .video-modal-close");
+
+cards.forEach((card, i) => {
     card.addEventListener("click", function () {
-        iframes[0].classList.remove("active");
-        iframes[1].classList.remove("active");
-        iframes[2].classList.remove("active");
+        iframes.forEach((frame) => {
+            frame.classList.remove("active");
+        });
         iframes[i].classList.add("active");
         modal.classList.add("show");
     });
@@ -392,45 +201,35 @@ cards.forEach(function (card, i) {
 
 closeBtn.addEventListener("click", function () {
     modal.classList.remove("show");
-    iframes[0].classList.remove("active");
-    iframes[1].classList.remove("active");
-    iframes[2].classList.remove("active");
-    iframes[0].src = iframes[0].src;
-    iframes[1].src = iframes[1].src;
-    iframes[2].src = iframes[2].src;
+    iframes.forEach((frame) => {
+        frame.classList.remove("active");
+        frame.src = frame.src;
+    });
 });
 
 modal.addEventListener("click", function (e) {
     if (e.target === modal) {
         modal.classList.remove("show");
-        iframes[0].classList.remove("active");
-        iframes[1].classList.remove("active");
-        iframes[2].classList.remove("active");
-        iframes[0].src = iframes[0].src;
-        iframes[1].src = iframes[1].src;
-        iframes[2].src = iframes[2].src;
+        iframes.forEach((frame) => {
+            frame.classList.remove("active");
+            frame.src = frame.src;
+        });
     }
 });
 
-
-/* Лента логотипов: автопрокрутка и перетаскивание мышью */
-var advertLine = document.querySelector("#advertisment-section .advertLine-div");
-var advertTrack = document.querySelector("#advertisment-section .advert-track");
-var advertCards = document.querySelectorAll("#advertisment-section .advert-card");
-var advertHalf = advertCards.length / 2;
-var advertOffset = 0;
-var advertDragging = false;
-var advertStartX = 0;
-var advertStartOffset = 0;
-
-function advertStep() {
-    var card = advertCards[0];
-    var gap = parseFloat(window.getComputedStyle(advertTrack).gap);
-    return card.offsetWidth + gap;
-}
+// Лента логотипов
+let advertLine = document.querySelector("#advertisment-section .advertLine-div");
+let advertTrack = document.querySelector("#advertisment-section .advert-track");
+let advertCards = document.querySelectorAll("#advertisment-section .advert-card");
+let advertHalf = advertCards.length / 2;
+let advertShag = advertCards[1].offsetLeft - advertCards[0].offsetLeft;
+let advertOffset = 0;
+let advertDragging = false;
+let advertStartX = 0;
+let advertStartOffset = 0;
 
 function advertWrap() {
-    var cycle = advertStep() * advertHalf;
+    let cycle = advertShag * advertHalf;
     if (advertOffset <= 0 - cycle) {
         advertOffset = advertOffset + cycle;
     }
@@ -439,20 +238,16 @@ function advertWrap() {
     }
 }
 
-function advertMove() {
-    advertTrack.style.transform = "translateX(" + advertOffset + "px)";
-}
-
 setInterval(function () {
     if (advertDragging === false) {
         advertTrack.style.transition = "transform 0.6s ease";
-        advertOffset = advertOffset - advertStep();
-        advertMove();
+        advertOffset = advertOffset - advertShag;
+        advertTrack.style.transform = "translateX(" + advertOffset + "px)";
         setTimeout(function () {
             if (advertDragging === false) {
                 advertTrack.style.transition = "none";
                 advertWrap();
-                advertMove();
+                advertTrack.style.transform = "translateX(" + advertOffset + "px)";
             }
         }, 650);
     }
@@ -464,21 +259,16 @@ advertLine.addEventListener("mousedown", function (e) {
     advertLine.classList.add("is-dragging");
     advertTrack.style.transition = "none";
     advertStartX = e.clientX;
-    var trans = window.getComputedStyle(advertTrack).transform;
-    if (trans.indexOf("matrix") !== -1) {
-        var parts = trans.split(",");
-        advertOffset = parseFloat(parts[4]);
-    }
     advertStartOffset = advertOffset;
 });
 
 document.addEventListener("mousemove", function (e) {
     if (advertDragging === true) {
-        var moveX = e.clientX - advertStartX;
+        let moveX = e.clientX - advertStartX;
         advertOffset = advertStartOffset + moveX;
         advertWrap();
         advertStartOffset = advertOffset - moveX;
-        advertMove();
+        advertTrack.style.transform = "translateX(" + advertOffset + "px)";
     }
 });
 
@@ -487,30 +277,29 @@ document.addEventListener("mouseup", function () {
         advertDragging = false;
         advertLine.classList.remove("is-dragging");
         advertWrap();
-        advertMove();
+        advertTrack.style.transform = "translateX(" + advertOffset + "px)";
         advertTrack.style.transition = "transform 0.6s ease";
     }
 });
 
-var catalogBtn = document.querySelector(".catalog-btn");
-var catalog = document.querySelector("#header-second-section .catalog");
-var categories = document.querySelectorAll("#header-second-section .catalog-categories .category");
-var panels = document.querySelectorAll("#header-second-section .catalog-panels .panel");
+// Каталог
+let catalogBtn = document.querySelector("#header-second-section .catalog-btn");
+let catalog = document.querySelector("#header-second-section .catalog");
+let categories = document.querySelectorAll("#header-second-section .catalog-categories .category");
+let panels = document.querySelectorAll("#header-second-section .catalog-panels .panel");
 
-// открыть / закрыть каталог по кнопке
 catalogBtn.addEventListener("click", function () {
     catalog.classList.toggle("show");
     catalogBtn.classList.toggle("open");
 });
 
-// наведение на категорию показывает её панель
-categories.forEach(function (category) {
+categories.forEach((category) => {
     category.addEventListener("mouseover", function () {
-        var number = this.getAttribute("data-cat");
-        categories.forEach(function (c) {
+        let number = this.getAttribute("data-cat");
+        categories.forEach((c) => {
             c.classList.remove("active");
         });
-        panels.forEach(function (p) {
+        panels.forEach((p) => {
             p.classList.remove("active");
         });
         this.classList.add("active");
@@ -518,7 +307,6 @@ categories.forEach(function (category) {
     });
 });
 
-// клик вне каталога закрывает его
 document.addEventListener("click", function (e) {
     if (!catalog.contains(e.target) && !catalogBtn.contains(e.target)) {
         catalog.classList.remove("show");
