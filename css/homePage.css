@@ -194,10 +194,13 @@ body {
 }
 
 .lang-menu {
-    position: fixed;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 8px;
     z-index: 30;
     min-width: 72px;
-    margin: 0;
     padding: 6px;
     list-style: none;
     background: var(--menu-bg);

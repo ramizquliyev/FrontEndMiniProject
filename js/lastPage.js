@@ -46,9 +46,6 @@ langButton.addEventListener("click", function () {
     if (langMenu.hidden === true) {
         drop.classList.remove("open");
         dropMenu.hidden = true;
-        let rect = langButton.getBoundingClientRect();
-        langMenu.style.top = rect.bottom + 8 + "px";
-        langMenu.style.left = rect.left + "px";
         langMenu.hidden = false;
         langDrop.classList.add("open");
     } else {
