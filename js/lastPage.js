@@ -266,20 +266,43 @@ rightPage.addEventListener("click", function () {
 let recentList = document.querySelector("#recent-section .list-wrap .products");
 let leftBtn = document.querySelector("#recent-section .left-btn");
 let rightBtn = document.querySelector("#recent-section .right-btn");
-let move = 0;
+let nomer = 0;
+recentList.classList.add("move-0");
 
 leftBtn.addEventListener("click", function () {
-    move = move + 314;
-    if (move > 0) {
-        move = 0;
+    nomer = nomer - 1;
+    if (nomer < 0) {
+        nomer = 0;
     }
-    recentList.style.marginLeft = move + "px";
+    recentList.classList.remove("move-0");
+    recentList.classList.remove("move-1");
+    recentList.classList.remove("move-2");
+    if (nomer === 0) {
+        recentList.classList.add("move-0");
+    }
+    if (nomer === 1) {
+        recentList.classList.add("move-1");
+    }
+    if (nomer === 2) {
+        recentList.classList.add("move-2");
+    }
 });
 
 rightBtn.addEventListener("click", function () {
-    move = move - 314;
-    if (move < -628) {
-        move = -628;
+    nomer = nomer + 1;
+    if (nomer > 2) {
+        nomer = 2;
     }
-    recentList.style.marginLeft = move + "px";
+    recentList.classList.remove("move-0");
+    recentList.classList.remove("move-1");
+    recentList.classList.remove("move-2");
+    if (nomer === 0) {
+        recentList.classList.add("move-0");
+    }
+    if (nomer === 1) {
+        recentList.classList.add("move-1");
+    }
+    if (nomer === 2) {
+        recentList.classList.add("move-2");
+    }
 });

@@ -516,6 +516,18 @@
     row-gap: 0;
 }
 
+#recent-section .list-wrap .products.move-0 {
+    margin-left: 0;
+}
+
+#recent-section .list-wrap .products.move-1 {
+    margin-left: -314px;
+}
+
+#recent-section .list-wrap .products.move-2 {
+    margin-left: -628px;
+}
+
 #recent-section .main-div .list-wrap .products .item {
     min-width: 289.8px;
 }
